@@ -15,7 +15,15 @@ const Board = (props) => {
   const [box7, setBox7] = useState(true);
   const [box8, setBox8] = useState(true);
   const [box9, setBox9] = useState(true);
-  console.log(box1)
+  const [oNums, setONums] = useState([]);
+  const [xNums, setXNums] = useState([]);
+  console.log(xNums);
+  console.log(oNums);
+
+  const winningCombos = [
+    ['1','2','3'], ['4','5','6'], ['7','8','9'], ['1','4','7'],
+    ['2','5','8'], ['3','6','9'], ['1','5','9'], ['3','5','7']
+  ]
 
   const setTile1 = (e) => {
     if (box1 !== true) {
@@ -24,9 +32,11 @@ const Board = (props) => {
     if (x) {
       setBox1("x");
       setX(false);
+      setXNums([...xNums, e.currentTarget.id]);
     } else {
       setBox1("o");
       setX(true);
+      setONums([...oNums, e.currentTarget.id]);
     }
   }
 
@@ -37,9 +47,11 @@ const Board = (props) => {
     if (x) {
       setBox2("x");
       setX(false);
+      setXNums([...xNums, e.currentTarget.id]);
     } else {
       setBox2("o");
       setX(true);
+      setONums([...oNums, e.currentTarget.id]);
     }
   }
 
@@ -50,9 +62,11 @@ const Board = (props) => {
     if (x) {
       setBox3("x");
       setX(false);
+      setXNums([...xNums, e.currentTarget.id]);
     } else {
       setBox3("o");
       setX(true);
+      setONums([...oNums, e.currentTarget.id]);
     }
   }
 
@@ -63,9 +77,11 @@ const Board = (props) => {
     if (x) {
       setBox4("x");
       setX(false);
+      setXNums([...xNums, e.currentTarget.id]);
     } else {
       setBox4("o");
       setX(true);
+      setONums([...oNums, e.currentTarget.id]);
     }
   }
 
@@ -76,9 +92,11 @@ const Board = (props) => {
     if (x) {
       setBox5("x");
       setX(false);
+      setXNums([...xNums, e.currentTarget.id]);
     } else {
       setBox5("o");
       setX(true);
+      setONums([...oNums, e.currentTarget.id]);
     }
   }
 
@@ -89,9 +107,11 @@ const Board = (props) => {
     if (x) {
       setBox6("x");
       setX(false);
+      setXNums([...xNums, e.currentTarget.id]);
     } else {
       setBox6("o");
       setX(true);
+      setONums([...oNums, e.currentTarget.id]);
     }
   }
 
@@ -102,9 +122,11 @@ const Board = (props) => {
     if (x) {
       setBox7("x");
       setX(false);
+      setXNums([...xNums, e.currentTarget.id]);
     } else {
       setBox7("o");
       setX(true);
+      setONums([...oNums, e.currentTarget.id]);
     }
   }
 
@@ -115,9 +137,11 @@ const Board = (props) => {
     if (x) {
       setBox8("x");
       setX(false);
+      setXNums([...xNums, e.currentTarget.id]);
     } else {
       setBox8("o");
       setX(true);
+      setONums([...oNums, e.currentTarget.id]);
     }
   }
 
@@ -128,9 +152,11 @@ const Board = (props) => {
     if (x) {
       setBox9("x");
       setX(false);
+      setXNums([...xNums, e.currentTarget.id]);
     } else {
       setBox9("o");
       setX(true);
+      setONums([...oNums, e.currentTarget.id]);
     }
   }
 

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const XO = (props) => {
-
-  console.log(props.x)
+const X = (props) => {
 
   return (
     <div className="tile">
@@ -14,4 +12,4 @@ const XO = (props) => {
   )
 };
 
-export default XO;
+export default X;
