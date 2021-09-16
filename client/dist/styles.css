@@ -1,7 +1,7 @@
 html, body {
   width: 100%;
   text-align: center;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Short Stack', cursive;
   display: flex;
   justify-content: center;
   background-color: #e0e0e0;
@@ -11,9 +11,9 @@ html, body {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 4.5rem;
   font-weight: 700;
-  margin: 50px auto;
+  margin: 30px auto 20px auto;
 }
 
 h2 {
@@ -23,12 +23,104 @@ h2 {
 h3 {
   font-size: 1.5rem;
   font-weight: 300;
-  margin: 50px;
+  margin: 20px auto;
+}
+
+.selections {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.challenger {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px auto;
+}
+
+.difficulty {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px auto;
+}
+
+.button {
+  height: 50px;
+  width: 120px;
+  border: none;
+  background-color: lightgrey;
+  border: 2px solid rgb(194, 194, 194);
+  border-radius: 10px;
+  font-family: 'Short Stack', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn {
+  height: 50px;
+  width: 120px;
+  border: none;
+  background-color: rgb(120, 177, 120);
+  border: 2px solid rgb(86, 143, 86);
+  border-radius: 10px;
+  font-family: 'Short Stack', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.button2 {
+  height: 50px;
+  width: 90px;
+  border: none;
+  background-color: lightgrey;
+  border: 2px solid rgb(194, 194, 194);
+  border-radius: 10px;
+  font-family: 'Short Stack', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.easy {
+  height: 50px;
+  width: 90px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Short Stack', cursive;
+  font-size: 1rem;
+  background-color: rgb(202, 202, 75);
+  border: 2px solid rgb(168, 168, 47);
+  cursor: pointer;
+}
+
+.medium {
+  height: 50px;
+  width: 90px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Short Stack', cursive;
+  font-size: 1rem;
+  background-color: rgb(255, 195, 104);
+  border: 2px solid rgb(206, 142, 47);
+  cursor: pointer;
+}
+
+.hard {
+  height: 50px;
+  width: 90px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Short Stack', cursive;
+  font-size: 1rem;
+  background-color: rgb(255, 127, 104);
+  border: 2px solid rgb(204, 87, 66);
+  cursor: pointer;
 }
 
 .board_wrapper {
-  height: 600px;
-  width: 600px;
+  height: 500px;
+  width: 500px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -129,6 +221,86 @@ h3 {
     margin: 10px auto;
   }
 
+  .challenger {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px auto;
+  }
+
+  .difficulty {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px auto;
+  }
+
+  .button {
+    height: 50px;
+    width: 120px;
+    border: none;
+    background-color: lightgrey;
+    border: 2px solid rgb(194, 194, 194);
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+  }
+
+  .btn {
+    height: 50px;
+    width: 120px;
+    border: none;
+    background-color: rgb(120, 177, 120);
+    border: 2px solid rgb(86, 143, 86);
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+  }
+
+  .button2 {
+    height: 50px;
+    width: 90px;
+    border: none;
+    background-color: lightgrey;
+    border: 2px solid rgb(194, 194, 194);
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+  }
+
+  .easy {
+    height: 50px;
+    width: 90px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+    background-color: rgb(202, 202, 75);
+    border: 2px solid rgb(168, 168, 47);
+  }
+
+  .medium {
+    height: 50px;
+    width: 90px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+    background-color: rgb(255, 195, 104);
+    border: 2px solid rgb(206, 142, 47);
+  }
+
+  .hard {
+    height: 50px;
+    width: 90px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+    background-color: rgb(255, 127, 104);
+    border: 2px solid rgb(204, 87, 66);;
+  }
+
   .board_wrapper {
     height: 400px;
     width: 400px;
@@ -223,6 +395,93 @@ h3 {
     font-size: 1rem;
     max-width: 90%;
     margin: 10px auto;
+  }
+
+  .selections {
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .challenger {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px auto;
+  }
+
+  .difficulty {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px auto;
+  }
+
+  .button {
+    height: 50px;
+    width: 120px;
+    border: none;
+    background-color: lightgrey;
+    border: 2px solid rgb(194, 194, 194);
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+  }
+
+  .btn {
+    height: 50px;
+    width: 120px;
+    border: none;
+    background-color: rgb(120, 177, 120);
+    border: 2px solid rgb(86, 143, 86);
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+  }
+
+  .button2 {
+    height: 50px;
+    width: 90px;
+    border: none;
+    background-color: lightgrey;
+    border: 2px solid rgb(194, 194, 194);
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+  }
+
+  .easy {
+    height: 50px;
+    width: 90px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+    background-color: rgb(202, 202, 75);
+    border: 2px solid rgb(168, 168, 47);
+  }
+
+  .medium {
+    height: 50px;
+    width: 90px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+    background-color: rgb(255, 195, 104);
+    border: 2px solid rgb(206, 142, 47);
+  }
+
+  .hard {
+    height: 50px;
+    width: 90px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 1rem;
+    background-color: rgb(255, 127, 104);
+    border: 2px solid rgb(204, 87, 66);;
   }
 
   .board_wrapper {
