@@ -6,8 +6,8 @@ const App = (props) => {
 
   return (
     <div>
-      <h1 className="glow">WELCOME TO TIC-TAC-JOE!</h1>
-      <h3>Take on the reigning AI champ, <strong>JoeBot</strong>, or challenge a friend</h3>
+      <h1 className="glow">WELCOME TO TIC-TAC-JOE</h1>
+      <h3>Take on the reigning AI champ, <strong>JoeBot</strong>, or challenge a friend!</h3>
       {/* <div>
         <JoeBot />
         <Friend />
