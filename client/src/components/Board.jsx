@@ -17,13 +17,55 @@ const Board = (props) => {
   const [box9, setBox9] = useState(true);
   const [oNums, setONums] = useState([]);
   const [xNums, setXNums] = useState([]);
-  console.log(xNums);
-  console.log(oNums);
+  const [winner, setWinner] = useState(false);
 
-  const winningCombos = [
-    ['1','2','3'], ['4','5','6'], ['7','8','9'], ['1','4','7'],
-    ['2','5','8'], ['3','6','9'], ['1','5','9'], ['3','5','7']
-  ]
+
+  useEffect(() => {
+
+    const winningCombos = [
+      '123', '456', '789', '147',
+      '258', '369', '159', '357'
+    ]
+
+    const rockPaperScissors = currPlayer => {
+      let rounds = 3;
+
+      const roundsPlayed = function(currentCombo) {
+        currentCombo = currentCombo || '';
+
+        if (currentCombo.length === rounds) {
+          if (currentCombo[0] === currentCombo[1]) {
+            return;
+          }
+
+          if (winningCombos.includes(currentCombo)) {
+            if (x) {
+              setWinner("X wins!")
+            } else {
+              setWinner("O wins!")
+            }
+            return;
+          }
+          return;
+        }
+
+        currPlayer.forEach(function(item) {
+          roundsPlayed(currentCombo + item);
+        })
+      }
+      roundsPlayed();
+
+    };
+
+    if (x) {
+      rockPaperScissors(oNums);
+    } else {
+      rockPaperScissors(xNums);
+    }
+
+  }, [xNums.length, oNums.length])
+
+
 
   const setTile1 = (e) => {
     if (box1 !== true) {
