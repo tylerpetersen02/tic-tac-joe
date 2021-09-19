@@ -92,7 +92,7 @@ const App = (props) => {
                   </>
                 }
               </div>
-              {joeBot &&
+              {/* {joeBot &&
                 <div className="difficulty">
                   {!easy &&
                     <button onClick={handleEasy} className="button2">Easy</button>
@@ -113,7 +113,7 @@ const App = (props) => {
                     <button onClick={handleHard} className="hard">Hard</button>
                   }
                 </div>
-              }
+              } */}
             </div>
           </>
         }
