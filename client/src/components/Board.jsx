@@ -18,6 +18,7 @@ const Board = (props) => {
   const [oNums, setONums] = useState([]);
   const [xNums, setXNums] = useState([]);
   const [winner, setWinner] = useState(false);
+  const reset = props.gameReset;
 
   if (props.gameReset) {
     const gameReset = () => {

@@ -14,6 +14,11 @@ const App = (props) => {
   const [winner, setWinner] = useState('');
   const [gameReset, setGameReset] = useState(false);
 
+  useEffect(() => {
+    setGameReset(false);
+  }, [gameReset])
+
+
   const handleJoeBot = () => {
     setJoeBot(!joeBot);
     setFriend(false);
@@ -50,73 +55,74 @@ const App = (props) => {
   const reset = () => {
     setWinner('');
     setWinnerModule(false)
-    setGameReset(true);
-    setGameReset(false);
+    setGameReset(!gameReset);
   }
 
-  const gameResetFinal = () => {
-    setGameReset(false);
+  const handleNewGame = () => {
+    gameReset(false);
   }
 
   return (
     <div>
       <h1 className="glow">WELCOME TO TIC-TAC-JOE</h1>
-      <h3>Take on the reigning AI champ, <strong>JoeBot</strong>, or challenge a friend!</h3>
       <div className="mid_background">
         {winnerModule &&
-          <div className="selections">
-            <div className="challenger">
-              {!friend &&
-                <>
-                  {!joeBot &&
-                    <button onClick={handleJoeBot} className="button">JoeBot</button>
-                  }
-                  {joeBot &&
-                    <button onClick={handleJoeBot} className="btn">JoeBot</button>
-                  }
-                </>
-              }
-              {!joeBot &&
-                <>
-                  {!friend &&
-                    <button onClick={handleFriend} className="button">Friend</button>
-                  }
-                  {friend &&
-                    <button onClick={handleFriend} className="btn">Friend</button>
-                  }
-                </>
-              }
-            </div>
-            {joeBot &&
-              <div className="difficulty">
-                {!easy &&
-                  <button onClick={handleEasy} className="button2">Easy</button>
+          <>
+            <h3>Take on the reigning AI champ, <strong>JoeBot</strong>, or challenge a friend!</h3>
+            <div className="selections">
+              <div className="challenger">
+                {!friend &&
+                  <>
+                    {!joeBot &&
+                      <button onClick={handleJoeBot} className="button">JoeBot</button>
+                    }
+                    {joeBot &&
+                      <button onClick={handleJoeBot} className="btn">JoeBot</button>
+                    }
+                  </>
                 }
-                {easy &&
-                  <button onClick={handleEasy} className="easy">Easy</button>
-                }
-                {!medium &&
-                  <button onClick={handleMedium} className="button2">Medium</button>
-                }
-                {medium &&
-                  <button onClick={handleMedium} className="medium">Medium</button>
-                }
-                {!hard &&
-                  <button onClick={handleHard} className="button2">Hard</button>
-                }
-                {hard &&
-                  <button onClick={handleHard} className="hard">Hard</button>
+                {!joeBot &&
+                  <>
+                    {!friend &&
+                      <button onClick={handleFriend} className="button">Friend</button>
+                    }
+                    {friend &&
+                      <button onClick={handleFriend} className="btn">Friend</button>
+                    }
+                  </>
                 }
               </div>
-            }
-          </div>
+              {joeBot &&
+                <div className="difficulty">
+                  {!easy &&
+                    <button onClick={handleEasy} className="button2">Easy</button>
+                  }
+                  {easy &&
+                    <button onClick={handleEasy} className="easy">Easy</button>
+                  }
+                  {!medium &&
+                    <button onClick={handleMedium} className="button2">Medium</button>
+                  }
+                  {medium &&
+                    <button onClick={handleMedium} className="medium">Medium</button>
+                  }
+                  {!hard &&
+                    <button onClick={handleHard} className="button2">Hard</button>
+                  }
+                  {hard &&
+                    <button onClick={handleHard} className="hard">Hard</button>
+                  }
+                </div>
+              }
+            </div>
+          </>
         }
         {!winnerModule &&
           <Winner winner={winner} reset={reset} />
         }
       </div>
       {!gameReset &&
-        <Board sendWinner={handleWinner} gameReset={gameReset} gameResetFinal={gameResetFinal} />
+        <Board sendWinner={handleWinner} gameReset={gameReset} />
       }
       <div className="footer">
         footer
