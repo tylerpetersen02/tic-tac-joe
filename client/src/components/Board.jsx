@@ -19,6 +19,24 @@ const Board = (props) => {
   const [xNums, setXNums] = useState([]);
   const [winner, setWinner] = useState(false);
 
+  if (props.gameReset) {
+    const gameReset = () => {
+      setX(true);
+      setBox1(true);
+      setBox2(true);
+      setBox3(true);
+      setBox4(true);
+      setBox5(true);
+      setBox6(true);
+      setBox7(true);
+      setBox8(true);
+      setBox9(true);
+      setONums([]);
+      setXNums([]);
+      setWinner(false);
+      props.gameResetFinal();
+    }
+  }
 
   useEffect(() => {
 
@@ -30,7 +48,7 @@ const Board = (props) => {
     const rockPaperScissors = currPlayer => {
       let rounds = 3;
 
-      const roundsPlayed = function(currentCombo) {
+      const roundsPlayed = function (currentCombo) {
         currentCombo = currentCombo || '';
 
         if (currentCombo.length === rounds) {
@@ -40,16 +58,16 @@ const Board = (props) => {
 
           if (winningCombos.includes(currentCombo)) {
             if (x) {
-              setWinner("X wins!")
+              setWinner("JoeBot wins!")
             } else {
-              setWinner("O wins!")
+              setWinner("You win!")
             }
             return;
           }
           return;
         }
 
-        currPlayer.forEach(function(item) {
+        currPlayer.forEach(function (item) {
           roundsPlayed(currentCombo + item);
         })
       }
@@ -64,6 +82,10 @@ const Board = (props) => {
     }
 
   }, [xNums.length, oNums.length])
+
+  useEffect(() => {
+    props.sendWinner(winner);
+  }, [winner])
 
 
 
