@@ -20,7 +20,6 @@ const Board = (props) => {
   const [winner, setWinner] = useState(false);
   const [tie, setTie] = useState(0);
   const reset = props.gameReset;
-  let count = 0;
   console.log(tie);
 
   if (props.gameReset) {
@@ -67,6 +66,9 @@ const Board = (props) => {
               setWinner("You win!")
             }
             return;
+          } else if (tie === 9) {
+            setWinner("It's a tie!")
+            return;
           }
           return;
         }
@@ -97,7 +99,7 @@ const Board = (props) => {
     if (box1 !== true) {
       return;
     }
-    count += 1;
+    let count = tie + 1;
     if (x) {
       setBox1("x");
       setX(false);
@@ -114,8 +116,8 @@ const Board = (props) => {
   const setTile2 = (e) => {
     if (box2 !== true) {
       return;
-      count += 1;
     }
+    let count = tie + 1;
     if (x) {
       setBox2("x");
       setX(false);
@@ -132,8 +134,8 @@ const Board = (props) => {
   const setTile3 = (e) => {
     if (box3 !== true) {
       return;
-      count += 1;
     }
+    let count = tie + 1;
     if (x) {
       setBox3("x");
       setX(false);
@@ -150,8 +152,8 @@ const Board = (props) => {
   const setTile4 = (e) => {
     if (box4 !== true) {
       return;
-      count += 1;
     }
+    let count = tie + 1;
     if (x) {
       setBox4("x");
       setX(false);
@@ -168,8 +170,8 @@ const Board = (props) => {
   const setTile5 = (e) => {
     if (box5 !== true) {
       return;
-      count += 1;
     }
+    let count = tie + 1;
     if (x) {
       setBox5("x");
       setX(false);
@@ -186,8 +188,8 @@ const Board = (props) => {
   const setTile6 = (e) => {
     if (box6 !== true) {
       return;
-      count += 1;
     }
+    let count = tie + 1;
     if (x) {
       setBox6("x");
       setX(false);
@@ -204,8 +206,8 @@ const Board = (props) => {
   const setTile7 = (e) => {
     if (box7 !== true) {
       return;
-      count += 1;
     }
+    let count = tie + 1;
     if (x) {
       setBox7("x");
       setX(false);
@@ -222,8 +224,8 @@ const Board = (props) => {
   const setTile8 = (e) => {
     if (box8 !== true) {
       return;
-      count += 1;
     }
+    let count = tie + 1;
     if (x) {
       setBox8("x");
       setX(false);
@@ -240,8 +242,8 @@ const Board = (props) => {
   const setTile9 = (e) => {
     if (box9 !== true) {
       return;
-      count += 1;
     }
+    let count = tie + 1;
     if (x) {
       setBox9("x");
       setX(false);
