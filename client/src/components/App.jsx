@@ -124,9 +124,6 @@ const App = (props) => {
       {!gameReset &&
         <Board sendWinner={handleWinner} gameReset={gameReset} />
       }
-      <div className="footer">
-        *clank* *beep* *beep* *boop*
-      </div>
     </div>
   )
 };

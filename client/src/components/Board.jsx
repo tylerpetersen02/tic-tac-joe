@@ -331,6 +331,9 @@ const Board = (props) => {
           <O />
         }
       </div>
+      <div className="footer">
+        *clank* *beep* *beep* *boop*
+      </div>
     </div>
   )
 };
