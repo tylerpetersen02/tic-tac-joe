@@ -125,7 +125,7 @@ const App = (props) => {
         <Board sendWinner={handleWinner} gameReset={gameReset} />
       }
       <div className="footer">
-        footer
+        *clank* *beep* *beep* *boop*
       </div>
     </div>
   )

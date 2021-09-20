@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "react-dev": "webpack --mode development --watch",
-    "start": "nodemon /index.js",
+    "start": "npm run kill && nodemon /index.js",
+    "kill": "kill -9 $(lsof -t -i:3000)",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

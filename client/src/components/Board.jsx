@@ -18,7 +18,10 @@ const Board = (props) => {
   const [oNums, setONums] = useState([]);
   const [xNums, setXNums] = useState([]);
   const [winner, setWinner] = useState(false);
+  const [tie, setTie] = useState(0);
   const reset = props.gameReset;
+  let count = 0;
+  console.log(tie);
 
   if (props.gameReset) {
     const gameReset = () => {
@@ -94,134 +97,161 @@ const Board = (props) => {
     if (box1 !== true) {
       return;
     }
+    count += 1;
     if (x) {
       setBox1("x");
       setX(false);
       setXNums([...xNums, e.currentTarget.id]);
+      setTie(count);
     } else {
       setBox1("o");
       setX(true);
       setONums([...oNums, e.currentTarget.id]);
+      setTie(count);
     }
   }
 
   const setTile2 = (e) => {
     if (box2 !== true) {
       return;
+      count += 1;
     }
     if (x) {
       setBox2("x");
       setX(false);
       setXNums([...xNums, e.currentTarget.id]);
+      setTie(count);
     } else {
       setBox2("o");
       setX(true);
       setONums([...oNums, e.currentTarget.id]);
+      setTie(count);
     }
   }
 
   const setTile3 = (e) => {
     if (box3 !== true) {
       return;
+      count += 1;
     }
     if (x) {
       setBox3("x");
       setX(false);
       setXNums([...xNums, e.currentTarget.id]);
+      setTie(count);
     } else {
       setBox3("o");
       setX(true);
       setONums([...oNums, e.currentTarget.id]);
+      setTie(count);
     }
   }
 
   const setTile4 = (e) => {
     if (box4 !== true) {
       return;
+      count += 1;
     }
     if (x) {
       setBox4("x");
       setX(false);
       setXNums([...xNums, e.currentTarget.id]);
+      setTie(count);
     } else {
       setBox4("o");
       setX(true);
       setONums([...oNums, e.currentTarget.id]);
+      setTie(count);
     }
   }
 
   const setTile5 = (e) => {
     if (box5 !== true) {
       return;
+      count += 1;
     }
     if (x) {
       setBox5("x");
       setX(false);
       setXNums([...xNums, e.currentTarget.id]);
+      setTie(count);
     } else {
       setBox5("o");
       setX(true);
       setONums([...oNums, e.currentTarget.id]);
+      setTie(count);
     }
   }
 
   const setTile6 = (e) => {
     if (box6 !== true) {
       return;
+      count += 1;
     }
     if (x) {
       setBox6("x");
       setX(false);
       setXNums([...xNums, e.currentTarget.id]);
+      setTie(count);
     } else {
       setBox6("o");
       setX(true);
       setONums([...oNums, e.currentTarget.id]);
+      setTie(count);
     }
   }
 
   const setTile7 = (e) => {
     if (box7 !== true) {
       return;
+      count += 1;
     }
     if (x) {
       setBox7("x");
       setX(false);
       setXNums([...xNums, e.currentTarget.id]);
+      setTie(count);
     } else {
       setBox7("o");
       setX(true);
       setONums([...oNums, e.currentTarget.id]);
+      setTie(count);
     }
   }
 
   const setTile8 = (e) => {
     if (box8 !== true) {
       return;
+      count += 1;
     }
     if (x) {
       setBox8("x");
       setX(false);
       setXNums([...xNums, e.currentTarget.id]);
+      setTie(count);
     } else {
       setBox8("o");
       setX(true);
       setONums([...oNums, e.currentTarget.id]);
+      setTie(count);
     }
   }
 
   const setTile9 = (e) => {
     if (box9 !== true) {
       return;
+      count += 1;
     }
     if (x) {
       setBox9("x");
       setX(false);
       setXNums([...xNums, e.currentTarget.id]);
+      setTie(count);
     } else {
       setBox9("o");
       setX(true);
       setONums([...oNums, e.currentTarget.id]);
+      setTie(count);
     }
   }
 
