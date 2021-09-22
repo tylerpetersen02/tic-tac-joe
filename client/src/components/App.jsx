@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Board from './Board.jsx';
 import Winner from './Winner.jsx';
+import JoeBot from './JoeBot.jsx';
 
 const App = (props) => {
 
@@ -124,6 +125,9 @@ const App = (props) => {
       {!gameReset &&
         <Board sendWinner={handleWinner} gameReset={gameReset} />
       }
+      {/* {joeBot &&
+        <JoeBot />
+      } */}
     </div>
   )
 };
