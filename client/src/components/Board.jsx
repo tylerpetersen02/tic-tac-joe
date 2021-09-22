@@ -48,7 +48,7 @@ const Board = (props) => {
       '258', '369', '159', '357'
     ]
 
-    const rockPaperScissors = currPlayer => {
+    const checkAllWinningCombos = currPlayer => {
       let rounds = 3;
 
       const roundsPlayed = function (currentCombo) {
@@ -82,9 +82,9 @@ const Board = (props) => {
     };
 
     if (x) {
-      rockPaperScissors(oNums);
+      checkAllWinningCombos(oNums);
     } else {
-      rockPaperScissors(xNums);
+      checkAllWinningCombos(xNums);
     }
 
   }, [xNums.length, oNums.length])
