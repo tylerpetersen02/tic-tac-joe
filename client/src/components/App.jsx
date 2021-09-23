@@ -7,6 +7,8 @@ import JoeBot from './JoeBot.jsx';
 const App = (props) => {
 
   const [joeBot, setJoeBot] = useState(false);
+  const [speechBubble, setSpeechBubble] = useState(false);
+  const [speech, setSpeech] = useState('');
   const [friend, setFriend] = useState(false);
   const [easy, setEasy] = useState(false);
   const [medium, setMedium] = useState(false);
@@ -123,7 +125,7 @@ const App = (props) => {
         }
       </div>
       {!gameReset &&
-        <Board sendWinner={handleWinner} gameReset={gameReset} />
+        <Board sendWinner={handleWinner} gameReset={gameReset} joeBot={joeBot}/>
       }
       {/* {joeBot &&
         <JoeBot />

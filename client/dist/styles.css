@@ -4,13 +4,14 @@ html, body {
   font-family: 'Short Stack', cursive;
   display: flex;
   justify-content: center;
-  background-color: #e0e0e0;
-  color: rgb(8, 53, 80);
+  background-color: #293241;
+  color: #e0fbfc;
   margin: 0;
   padding: 0;
 }
 
 h1 {
+  color: #e0fbfc;
   font-size: 4.5rem;
   font-weight: 700;
   margin: 30px auto 20px auto;
@@ -51,7 +52,7 @@ h3 {
   height: 50px;
   width: 120px;
   border: none;
-  background-color: lightgrey;
+  background-color: #e0fbfc;
   border: 2px solid rgb(194, 194, 194);
   border-radius: 10px;
   font-family: 'Short Stack', cursive;
@@ -75,7 +76,7 @@ h3 {
   height: 50px;
   width: 90px;
   border: none;
-  background-color: lightgrey;
+  background-color: #e0fbfc;
   border: 2px solid rgb(194, 194, 194);
   border-radius: 10px;
   font-family: 'Short Stack', cursive;
@@ -186,9 +187,9 @@ h3 {
 .tile {
   width: 70%;
   height: 70%;
-  border-radius: 30px;
+  /* border-radius: 30px;
   background: linear-gradient(145deg, #5d5d5d, #242524);
-  box-shadow:  8px 8px 18px #585858, -8px -8px 18px #ffffff;
+  box-shadow:  8px 8px 18px #585858, -8px -8px 18px #ffffff; */
   padding: 0;
   display: flex;
   justify-content: center;
@@ -209,32 +210,17 @@ h3 {
 }
 
 .mid_background {
-  background-color: rgb(8, 53, 80);
-  color: lightgrey;
+  background-color: #3d5a80;
+  color: #e0fbfc;
   padding: 10px 0 20px 0;
   width: 100%;
   border-radius: 20px;
 }
 
-.footer {
-  background-color: rgb(8, 53, 80);
-  height: 40px;
-  color: white;
-  position: absolute;
-  margin: 0 auto;
-  bottom: 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 1014px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
 @media only screen and (max-width: 768px) {
 
   h1 {
+    color: #e0fbfc;
     font-size: 3rem;
     max-width: 90%;
     margin: 20px auto;
@@ -269,7 +255,7 @@ h3 {
     height: 50px;
     width: 120px;
     border: none;
-    background-color: lightgrey;
+    background-color: #e0fbfc;
     border: 2px solid rgb(194, 194, 194);
     border-radius: 10px;
     font-family: 'Short Stack', cursive;
@@ -291,7 +277,7 @@ h3 {
     height: 50px;
     width: 90px;
     border: none;
-    background-color: lightgrey;
+    background-color: #e0fbfc;
     border: 2px solid rgb(194, 194, 194);
     border-radius: 10px;
     font-family: 'Short Stack', cursive;
@@ -398,10 +384,9 @@ h3 {
   .tile {
     width: 70%;
     height: 70%;
-    background-color: #fff;
-    border-radius: 20px;
+    /* border-radius: 20px;
     background: linear-gradient(145deg, #5d5d5d, #242524);
-    box-shadow:  6px 6px 15px #585858, -6px -6px 15px #ffffff;
+    box-shadow:  6px 6px 15px #585858, -6px -6px 15px #ffffff; */
     padding: 0;
     display: flex;
     justify-content: center;
@@ -412,31 +397,17 @@ h3 {
   }
 
   .mid_background {
-    background-color: rgb(8, 53, 80);
-    color: lightgrey;
+    background-color: #3d5a80;
+    color: #e0fbfc;
     padding: 10px 0 20px 0;
     border-radius: 0px;
   }
-
-  .footer {
-    background-color: rgb(8, 53, 80);
-    height: 30px;
-    color: white;
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-  }
-
 }
 
 @media only screen and (max-width: 480px) {
 
   h1 {
+    color: #e0fbfc;
     font-size: 3rem;
     max-width: 90%;
     margin: 20px auto;
@@ -479,7 +450,7 @@ h3 {
     height: 50px;
     width: 120px;
     border: none;
-    background-color: lightgrey;
+    background-color: #e0fbfc;
     border: 2px solid rgb(194, 194, 194);
     border-radius: 10px;
     font-family: 'Short Stack', cursive;
@@ -501,7 +472,7 @@ h3 {
     height: 50px;
     width: 90px;
     border: none;
-    background-color: lightgrey;
+    background-color: #e0fbfc;
     border: 2px solid rgb(194, 194, 194);
     border-radius: 10px;
     font-family: 'Short Stack', cursive;
@@ -608,10 +579,9 @@ h3 {
   .tile {
     width: 70%;
     height: 70%;
-    background-color: #fff;
-    border-radius: 15px;
+    /* border-radius: 15px;
     background: linear-gradient(145deg, #5d5d5d, #242524);
-    box-shadow:  4px 4px 12px #4b4b4b, -4px -4px 12px #ffffff;
+    box-shadow:  4px 4px 12px #4b4b4b, -4px -4px 12px #ffffff; */
     padding: 0;
     display: flex;
     justify-content: center;
@@ -622,25 +592,43 @@ h3 {
   }
 
   .mid_background {
-    background-color: rgb(8, 53, 80);
-    color: lightgrey;
+    background-color: #3d5a80;
+    color: #e0fbfc;
     padding: 10px 0 20px 0;
     border-radius: 0px;
   }
 
-  .footer {
-    background-color: rgb(8, 53, 80);
-    height: 30px;
-    color: white;
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    font-size: .8em;
+  .speech_bubble {
+    background: rgb(26, 26, 26);
+    border: 2px solid rgb(87, 87, 87);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 auto;
+    width: 300px;
+  }
+
+  .typewriter h3 {
+    color: rgb(0, 165, 8);
+    font-family: monospace;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    white-space: nowrap;
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation:
+      typing 2.5s steps(30, end),
+      blink-caret .5s step-end infinite;
+  }
+
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #fff}
   }
 
 }
