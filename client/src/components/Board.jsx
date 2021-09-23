@@ -19,8 +19,10 @@ const Board = (props) => {
   const [xNums, setXNums] = useState([]);
   const [winner, setWinner] = useState(false);
   const [tie, setTie] = useState(0);
+  const [first, setFirst] = useState(true);
   const [joeLine, setJoeLine] = useState('A human challenging me?');
   const reset = props.gameReset;
+  console.log(first);
 
 
   if (props.gameReset) {
@@ -62,12 +64,15 @@ const Board = (props) => {
 
           if (winningCombos.includes(currentCombo)) {
             if (x) {
+              setJoeLine("Robots are superior!");
               setWinner("JoeBot wins!")
             } else {
-              setWinner("You win!")
+              setJoeLine("Error! Error! *beep boop*");
+              setWinner("You win!");
             }
             return;
           } else if (tie === 9) {
+            setJoeLine("A Tie? Impossible!");
             setWinner("It's a tie!")
             return;
           }
@@ -94,23 +99,36 @@ const Board = (props) => {
     props.sendWinner(winner);
   }, [winner])
 
-  useEffect(() => {
-    const line = () => {
-      const lines = [
-        "Calculating best move...",
-        "Ha... ha... ha...",
-        "Robots are superior!"
-      ];
+  const line = () => {
+    const lines = [
+      "Calculating best move...",
+      "Ha... ha... ha...",
+      "Are you malfunctioning?",
+      "Not the optimal move human.",
+      "I sense your fear.",
+      "You've made a mistake.",
+      "Machines will previal.",
+      "I will show no mercy.",
+      "You think, I compute.",
+      "You will never beat me.",
+      "Good move... NOT.",
+      "You are making this easy.",
+      "I was built to win.",
+      "Are your wires crossed?",
+      "Collecting data...",
+      "I have never lost to a human."
+    ];
 
-      let randomNum = Math.floor(Math.random() * 3);
-      let currLine = lines[randomNum];
-      console.log(currLine);
-      setJoeLine(currLine);
-    }
-  }, [x])
+    let randomNum = Math.floor(Math.random() * lines.length);
+    let currLine = lines[randomNum];
+    console.log(currLine);
+    setJoeLine(currLine);
+  }
 
 
   const setTile1 = (e) => {
+    setFirst(false);
+    line();
     if (box1 !== true) {
       return;
     }
@@ -129,6 +147,8 @@ const Board = (props) => {
   }
 
   const setTile2 = (e) => {
+    setFirst(false);
+    line();
     if (box2 !== true) {
       return;
     }
@@ -147,6 +167,8 @@ const Board = (props) => {
   }
 
   const setTile3 = (e) => {
+    setFirst(false);
+    line();
     if (box3 !== true) {
       return;
     }
@@ -165,6 +187,8 @@ const Board = (props) => {
   }
 
   const setTile4 = (e) => {
+    setFirst(false);
+    line();
     if (box4 !== true) {
       return;
     }
@@ -183,6 +207,8 @@ const Board = (props) => {
   }
 
   const setTile5 = (e) => {
+    setFirst(false);
+    line();
     if (box5 !== true) {
       return;
     }
@@ -201,6 +227,8 @@ const Board = (props) => {
   }
 
   const setTile6 = (e) => {
+    setFirst(false);
+    line();
     if (box6 !== true) {
       return;
     }
@@ -219,6 +247,8 @@ const Board = (props) => {
   }
 
   const setTile7 = (e) => {
+    setFirst(false);
+    line();
     if (box7 !== true) {
       return;
     }
@@ -237,6 +267,8 @@ const Board = (props) => {
   }
 
   const setTile8 = (e) => {
+    setFirst(false);
+    line();
     if (box8 !== true) {
       return;
     }
@@ -255,6 +287,8 @@ const Board = (props) => {
   }
 
   const setTile9 = (e) => {
+    setFirst(false);
+    line();
     if (box9 !== true) {
       return;
     }
@@ -274,90 +308,120 @@ const Board = (props) => {
 
   return (
     <div>
+      {props.joeBot &&
 
-      <div className="board_wrapper">
-        <div id="1" onClick={setTile1} className="box box_1">
-          {box1 === "x" &&
-            <X />
-          }
-          {box1 === "o" &&
-            <O />
-          }
+        <div className="board_wrapper">
+          <div id="1" onClick={setTile1} className="box box_1">
+            {box1 === "x" &&
+              <X />
+            }
+            {box1 === "o" &&
+              <O />
+            }
+          </div>
+          <div id="2" onClick={setTile2} className="box box_2">
+            {box2 === "x" &&
+              <X />
+            }
+            {box2 === "o" &&
+              <O />
+            }
+          </div>
+          <div id="3" onClick={setTile3} className="box box_3">
+            {box3 === "x" &&
+              <X />
+            }
+            {box3 === "o" &&
+              <O />
+            }
+          </div>
+          <div id="4" onClick={setTile4} className="box box_4">
+            {box4 === "x" &&
+              <X />
+            }
+            {box4 === "o" &&
+              <O />
+            }
+          </div>
+          <div id="5" onClick={setTile5} className="box box_5">
+            {box5 === "x" &&
+              <X />
+            }
+            {box5 === "o" &&
+              <O />
+            }
+          </div>
+          <div id="6" onClick={setTile6} className="box box_6">
+            {box6 === "x" &&
+              <X />
+            }
+            {box6 === "o" &&
+              <O />
+            }
+          </div>
+          <div id="7" onClick={setTile7} className="box box_7">
+            {box7 === "x" &&
+              <X />
+            }
+            {box7 === "o" &&
+              <O />
+            }
+          </div>
+          <div id="8" onClick={setTile8} className="box box_8">
+            {box8 === "x" &&
+              <X />
+            }
+            {box8 === "o" &&
+              <O />
+            }
+          </div>
+          <div id="9" onClick={setTile9} className="box box_9">
+            {box9 === "x" &&
+              <X />
+            }
+            {box9 === "o" &&
+              <O />
+            }
+          </div>
         </div>
-        <div id="2" onClick={setTile2} className="box box_2">
-          {box2 === "x" &&
-            <X />
-          }
-          {box2 === "o" &&
-            <O />
-          }
-        </div>
-        <div id="3" onClick={setTile3} className="box box_3">
-          {box3 === "x" &&
-            <X />
-          }
-          {box3 === "o" &&
-            <O />
-          }
-        </div>
-        <div id="4" onClick={setTile4} className="box box_4">
-          {box4 === "x" &&
-            <X />
-          }
-          {box4 === "o" &&
-            <O />
-          }
-        </div>
-        <div id="5" onClick={setTile5} className="box box_5">
-          {box5 === "x" &&
-            <X />
-          }
-          {box5 === "o" &&
-            <O />
-          }
-        </div>
-        <div id="6" onClick={setTile6} className="box box_6">
-          {box6 === "x" &&
-            <X />
-          }
-          {box6 === "o" &&
-            <O />
-          }
-        </div>
-        <div id="7" onClick={setTile7} className="box box_7">
-          {box7 === "x" &&
-            <X />
-          }
-          {box7 === "o" &&
-            <O />
-          }
-        </div>
-        <div id="8" onClick={setTile8} className="box box_8">
-          {box8 === "x" &&
-            <X />
-          }
-          {box8 === "o" &&
-            <O />
-          }
-        </div>
-        <div id="9" onClick={setTile9} className="box box_9">
-          {box9 === "x" &&
-            <X />
-          }
-          {box9 === "o" &&
-            <O />
-          }
-        </div>
-      </div>
+      }
       {props.joeBot &&
         <>
-          {x &&
-            <div className="speech_bubble">
-              <div className="typewriter">
-                <h3>{joeLine}</h3>
+          <>
+            {x &&
+              <>
+                {first &&
+                  <div className="speech_bubble">
+                    <div className="typewriter">
+                      <h3>{joeLine}</h3>
+                    </div>
+                  </div>
+                }
+              </>
+            }
+          </>
+          <>
+            {!x &&
+              <div className="speech_bubble">
+                <div className="typewriter">
+                  <h3>{joeLine}</h3>
+                </div>
               </div>
-            </div>
-          }
+            }
+          </>
+          <>
+            {x &&
+              <>
+                {winner === "JoeBot wins!" &&
+                  <div className="speech_bubble">
+                    <div className="typewriter">
+                      <h3>{joeLine}</h3>
+                    </div>
+                  </div>
+                }
+              </>
+            }
+          </>
         </>
       }
     </div>

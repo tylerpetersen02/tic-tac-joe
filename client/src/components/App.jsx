@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRobot } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Board from './Board.jsx';
 import Winner from './Winner.jsx';
@@ -71,26 +73,16 @@ const App = (props) => {
       <div className="mid_background">
         {winnerModule &&
           <>
-            <h3>Take on the reigning AI champ, <strong>JoeBot</strong>, or challenge a friend!</h3>
+            <h3>Do you have what it takes to beat the reigning AI champ <strong>JoeBot</strong>?</h3>
             <div className="selections">
               <div className="challenger">
                 {!friend &&
                   <>
                     {!joeBot &&
-                      <button onClick={handleJoeBot} className="button">JoeBot</button>
+                      <button onClick={handleJoeBot} className="button">I'm ready!</button>
                     }
                     {joeBot &&
-                      <button onClick={handleJoeBot} className="btn">JoeBot</button>
-                    }
-                  </>
-                }
-                {!joeBot &&
-                  <>
-                    {!friend &&
-                      <button onClick={handleFriend} className="button">Friend</button>
-                    }
-                    {friend &&
-                      <button onClick={handleFriend} className="btn">Friend</button>
+                      <h2 className="banner">You move first!</h2>
                     }
                   </>
                 }

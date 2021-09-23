@@ -18,7 +18,7 @@ h1 {
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2rem;
   margin: 20px auto;
 }
 
@@ -60,16 +60,10 @@ h3 {
   cursor: pointer;
 }
 
-.btn {
-  height: 50px;
-  width: 120px;
-  border: none;
-  background-color: rgb(120, 177, 120);
-  border: 2px solid rgb(86, 143, 86);
-  border-radius: 10px;
-  font-family: 'Short Stack', cursive;
-  font-size: 1rem;
-  cursor: pointer;
+.banner {
+  color: #ee6c4d;
+  margin: 0;
+  font-weight: bold;
 }
 
 .button2 {
@@ -217,6 +211,39 @@ h3 {
   border-radius: 20px;
 }
 
+.speech_bubble {
+  background: rgb(26, 26, 26);
+  border: 2px solid rgb(87, 87, 87);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 auto;
+  width: 500px;
+}
+
+.typewriter h3 {
+  color: rgb(0, 165, 8);
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap;
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+    typing 2.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #fff}
+}
+
 @media only screen and (max-width: 768px) {
 
   h1 {
@@ -227,7 +254,7 @@ h3 {
   }
 
   h2 {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
     margin: 15px auto;
   }
 
@@ -262,15 +289,10 @@ h3 {
     font-size: 1rem;
   }
 
-  .btn {
-    height: 50px;
-    width: 120px;
-    border: none;
-    background-color: rgb(120, 177, 120);
-    border: 2px solid rgb(86, 143, 86);
-    border-radius: 10px;
-    font-family: 'Short Stack', cursive;
-    font-size: 1rem;
+  .banner {
+    color: #ee6c4d;
+    margin: 0;
+    font-weight: bold;
   }
 
   .button2 {
@@ -402,6 +424,39 @@ h3 {
     padding: 10px 0 20px 0;
     border-radius: 0px;
   }
+
+  .speech_bubble {
+    background: rgb(26, 26, 26);
+    border: 2px solid rgb(87, 87, 87);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 auto;
+    width: 400px;
+  }
+
+  .typewriter h3 {
+    color: rgb(0, 165, 8);
+    font-family: monospace;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    white-space: nowrap;
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation:
+      typing 2.5s steps(30, end),
+      blink-caret .5s step-end infinite;
+  }
+
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #fff}
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -414,9 +469,8 @@ h3 {
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.4rem;
     max-width: 90%;
-    margin: 10px auto;
   }
 
   h3 {
@@ -457,15 +511,10 @@ h3 {
     font-size: 1rem;
   }
 
-  .btn {
-    height: 50px;
-    width: 120px;
-    border: none;
-    background-color: rgb(120, 177, 120);
-    border: 2px solid rgb(86, 143, 86);
-    border-radius: 10px;
-    font-family: 'Short Stack', cursive;
-    font-size: 1rem;
+  .banner {
+    color: #ee6c4d;
+    margin: 0;
+    font-weight: bold;
   }
 
   .button2 {
@@ -610,6 +659,7 @@ h3 {
   .typewriter h3 {
     color: rgb(0, 165, 8);
     font-family: monospace;
+    font-size: 1em;
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     white-space: nowrap;
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
