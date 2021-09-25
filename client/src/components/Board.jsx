@@ -90,7 +90,7 @@ const Board = (props) => {
 
     };
 
-    if (!x) {
+    if (x) {
       checkAllWinningCombos(oNums);
     } else {
       checkAllWinningCombos(xNums);
