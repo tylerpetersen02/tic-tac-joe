@@ -23,7 +23,6 @@ const Board = (props) => {
   const [joeLine, setJoeLine] = useState('A human challenging me?');
   const reset = props.gameReset;
 
-
   if (props.gameReset) {
     const gameReset = () => {
       setX(true);
@@ -62,8 +61,6 @@ const Board = (props) => {
           }
 
           if (winningCombos.includes(currentCombo)) {
-            console.log(currentCombo);
-            console.log(x);
             if (x) {
               setJoeLine("Robots are superior!");
               setWinner("JoeBot wins!");
@@ -71,13 +68,10 @@ const Board = (props) => {
               setJoeLine("Error! Error! *beep boop*");
               setWinner("You win!");
             }
-            return;
-          } else {
-            if (tie === 9) {
-              setJoeLine("A Tie? Cannot compute!");
-              setWinner("It's a tie!")
-              return;
-            }
+          } else if (tie === 9 && !winningCombos.includes(currentCombo)) {
+            console.log(currentCombo);
+            setJoeLine("A Tie? Cannot compute!");
+            setWinner("It's a tie!")
           }
           return;
         }
