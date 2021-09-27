@@ -233,9 +233,42 @@ const Board = (props) => {
           <>
             {x &&
               <>
-                {first &&
-                  <SpeechBubble first={first} joeLine={joeLine} handleJoeLine={handleJoeLine} x={x} />
-                }
+                <>
+                  {first &&
+                    <SpeechBubble
+                      first={first}
+                      joeLine={joeLine}
+                      handleJoeLine={handleJoeLine}
+                      x={x}
+                    />
+                  }
+                  <>
+                  </>
+                  {winner &&
+                    <SpeechBubble
+                      winner={winner}
+                      first={first}
+                      joeLine={joeLine}
+                      handleJoeLine={handleJoeLine}
+                      x={x}
+                    />
+                  }
+                </>
+                <>
+                  {!first &&
+                    <>
+                      {!winner &&
+                        <SpeechBubble
+                          winner={winner}
+                          first={first}
+                          joeLine={joeLine}
+                          handleJoeLine={handleJoeLine}
+                          x={x}
+                        />
+                      }
+                    </>
+                  }
+                </>
               </>
             }
           </>
@@ -244,23 +277,26 @@ const Board = (props) => {
               <>
                 <>
                   {winner &&
-                    <SpeechBubble winner={winner} first={first} joeLine={joeLine} handleJoeLine={handleJoeLine} x={x} />
+                    <SpeechBubble
+                      winner={winner}
+                      first={first}
+                      joeLine={joeLine}
+                      handleJoeLine={handleJoeLine}
+                      x={x}
+                    />
                   }
                 </>
                 <>
                   {!winner &&
-                    <SpeechBubble winner={winner} first={first} joeLine={joeLine} handleJoeLine={handleJoeLine} x={x} />
+                    <SpeechBubble
+                      winner={winner}
+                      first={first}
+                      joeLine={joeLine}
+                      handleJoeLine={handleJoeLine}
+                      x={x}
+                    />
                   }
                 </>
-              </>
-            }
-          </>
-          <>
-            {x &&
-              <>
-                {winner &&
-                  <SpeechBubble  winner={winner} first={first} joeLine={joeLine} handleJoeLine={handleJoeLine} x={x} />
-                }
               </>
             }
           </>
