@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 const SpeechBubble = (props) => {
 
-  const [oneTime, setOneTime] = useState(true);
+  useEffect(() => {
 
-  if (props.first) {
-    props.handleJoeLine("A human is challenging me?");
-  } else if (!props.winner) {
-    if (oneTime) {
+    if (props.first) {
+      props.handleJoeLine("A human is challenging me?");
+    } else if (!props.winner) {
 
       const line = () => {
         const lines = [
@@ -37,9 +35,9 @@ const SpeechBubble = (props) => {
       };
 
       line();
-      setOneTime(false);
     }
-  }
+
+  }, [])
 
   return (
     <div className="speech_bubble">
