@@ -17,11 +17,13 @@ const Board = (props) => {
   const [box9, setBox9] = useState(true);
   const [oNums, setONums] = useState([]);
   const [xNums, setXNums] = useState([]);
+  const [moves, setMoves] = useState(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
   const [winner, setWinner] = useState(false);
   const [tie, setTie] = useState(0);
   const [first, setFirst] = useState(true);
   const [joeLine, setJoeLine] = useState('A human challenging me?');
   const reset = props.gameReset;
+  console.log(moves);
 
   if (props.gameReset) {
     const gameReset = () => {
@@ -57,7 +59,10 @@ const Board = (props) => {
         currentCombo = currentCombo || '';
 
         if (currentCombo.length === rounds) {
-          if (currentCombo[0] === currentCombo[1]) {
+          if (
+            currentCombo[0] === currentCombo[1] ||
+            currentCombo[1] === currentCombo[2]
+          ) {
             return;
           }
 
@@ -71,7 +76,6 @@ const Board = (props) => {
               setWinner("You win!");
             }
           } else if (tie === 9 && !winningCombos.includes(currentCombo)) {
-            console.log(currentCombo);
             setJoeLine("A Tie? Cannot compute!");
             setWinner("It's a tie!")
           }
@@ -125,184 +129,138 @@ const Board = (props) => {
     setJoeLine(currLine);
   }
 
-
-  const setTile1 = (e) => {
+  const placeTile = (e) => {
+    let id = e.currentTarget.id;
+    let count = tie + 1;
+    setTie(count);
     setFirst(false);
     line();
-    if (box1 !== true) {
-      return;
-    }
-    let count = tie + 1;
-    if (x) {
-      setBox1("x");
-      setX(false);
-      setXNums([...xNums, e.currentTarget.id]);
-      setTie(count);
-    } else {
-      setBox1("o");
-      setX(true);
-      setONums([...oNums, e.currentTarget.id]);
-      setTie(count);
-    }
-  }
+    setX(!x);
+    setMoves(moves.filter(item => item !== id));
 
-  const setTile2 = (e) => {
-    setFirst(false);
-    line();
-    if (box2 !== true) {
-      return;
+    if (id === '1') {
+      if (box1 !== true) {
+        return;
+      }
+      if (x) {
+        setBox1("x");
+        setXNums([...xNums, id]);
+      } else {
+        setBox1("o");
+        setONums([...oNums, id]);
+      }
     }
-    let count = tie + 1;
-    if (x) {
-      setBox2("x");
-      setX(false);
-      setXNums([...xNums, e.currentTarget.id]);
-      setTie(count);
-    } else {
-      setBox2("o");
-      setX(true);
-      setONums([...oNums, e.currentTarget.id]);
-      setTie(count);
-    }
-  }
 
-  const setTile3 = (e) => {
-    setFirst(false);
-    line();
-    if (box3 !== true) {
-      return;
+    if (id === '2') {
+      if (box2 !== true) {
+        return;
+      }
+      let count = tie + 1;
+      if (x) {
+        setBox2("x");
+        setXNums([...xNums, id]);
+      } else {
+        setBox2("o");
+        setONums([...oNums, id]);
+      }
     }
-    let count = tie + 1;
-    if (x) {
-      setBox3("x");
-      setX(false);
-      setXNums([...xNums, e.currentTarget.id]);
-      setTie(count);
-    } else {
-      setBox3("o");
-      setX(true);
-      setONums([...oNums, e.currentTarget.id]);
-      setTie(count);
-    }
-  }
 
-  const setTile4 = (e) => {
-    setFirst(false);
-    line();
-    if (box4 !== true) {
-      return;
+    if (id === '3') {
+      if (box3 !== true) {
+        return;
+      }
+      let count = tie + 1;
+      if (x) {
+        setBox3("x");
+        setXNums([...xNums, id]);
+      } else {
+        setBox3("o");
+        setONums([...oNums, id]);
+      }
     }
-    let count = tie + 1;
-    if (x) {
-      setBox4("x");
-      setX(false);
-      setXNums([...xNums, e.currentTarget.id]);
-      setTie(count);
-    } else {
-      setBox4("o");
-      setX(true);
-      setONums([...oNums, e.currentTarget.id]);
-      setTie(count);
-    }
-  }
 
-  const setTile5 = (e) => {
-    setFirst(false);
-    line();
-    if (box5 !== true) {
-      return;
+    if (id === '4') {
+      if (box4 !== true) {
+        return;
+      }
+      let count = tie + 1;
+      if (x) {
+        setBox4("x");
+        setXNums([...xNums, id]);
+      } else {
+        setBox4("o");
+        setONums([...oNums, id]);
+      }
     }
-    let count = tie + 1;
-    if (x) {
-      setBox5("x");
-      setX(false);
-      setXNums([...xNums, e.currentTarget.id]);
-      setTie(count);
-    } else {
-      setBox5("o");
-      setX(true);
-      setONums([...oNums, e.currentTarget.id]);
-      setTie(count);
-    }
-  }
 
-  const setTile6 = (e) => {
-    setFirst(false);
-    line();
-    if (box6 !== true) {
-      return;
+    if (id === '5') {
+      if (box5 !== true) {
+        return;
+      }
+      let count = tie + 1;
+      if (x) {
+        setBox5("x");
+        setXNums([...xNums, id]);
+      } else {
+        setBox5("o");
+        setONums([...oNums, id]);
+      }
     }
-    let count = tie + 1;
-    if (x) {
-      setBox6("x");
-      setX(false);
-      setXNums([...xNums, e.currentTarget.id]);
-      setTie(count);
-    } else {
-      setBox6("o");
-      setX(true);
-      setONums([...oNums, e.currentTarget.id]);
-      setTie(count);
-    }
-  }
 
-  const setTile7 = (e) => {
-    setFirst(false);
-    line();
-    if (box7 !== true) {
-      return;
+    if (id === '6') {
+      if (box6 !== true) {
+        return;
+      }
+      let count = tie + 1;
+      if (x) {
+        setBox6("x");
+        setXNums([...xNums, id]);
+      } else {
+        setBox6("o");
+        setONums([...oNums, id]);
+      }
     }
-    let count = tie + 1;
-    if (x) {
-      setBox7("x");
-      setX(false);
-      setXNums([...xNums, e.currentTarget.id]);
-      setTie(count);
-    } else {
-      setBox7("o");
-      setX(true);
-      setONums([...oNums, e.currentTarget.id]);
-      setTie(count);
-    }
-  }
 
-  const setTile8 = (e) => {
-    setFirst(false);
-    line();
-    if (box8 !== true) {
-      return;
+    if (id === '7') {
+      if (box7 !== true) {
+        return;
+      }
+      let count = tie + 1;
+      if (x) {
+        setBox7("x");
+        setXNums([...xNums, id]);
+      } else {
+        setBox7("o");
+        setONums([...oNums, id]);
+      }
     }
-    let count = tie + 1;
-    if (x) {
-      setBox8("x");
-      setX(false);
-      setXNums([...xNums, e.currentTarget.id]);
-      setTie(count);
-    } else {
-      setBox8("o");
-      setX(true);
-      setONums([...oNums, e.currentTarget.id]);
-      setTie(count);
-    }
-  }
 
-  const setTile9 = (e) => {
-    setFirst(false);
-    line();
-    if (box9 !== true) {
-      return;
+    if (id === '8') {
+      if (box8 !== true) {
+        return;
+      }
+      let count = tie + 1;
+      if (x) {
+        setBox8("x");
+        setXNums([...xNums, id]);
+      } else {
+        setBox8("o");
+        setONums([...oNums, id]);
+      }
     }
-    let count = tie + 1;
-    if (x) {
-      setBox9("x");
-      setX(false);
-      setXNums([...xNums, e.currentTarget.id]);
-      setTie(count);
-    } else {
-      setBox9("o");
-      setX(true);
-      setONums([...oNums, e.currentTarget.id]);
-      setTie(count);
+
+    if (id === '9') {
+      if (box9 !== true) {
+        return;
+      }
+      let count = tie + 1;
+      if (x) {
+        setBox9("x");
+        setXNums([...xNums, id]);
+      } else {
+        setBox9("o");
+        setONums([...oNums, id]);
+      }
     }
   }
 
@@ -311,7 +269,7 @@ const Board = (props) => {
       {props.joeBot &&
 
         <div className="board_wrapper">
-          <div id="1" onClick={setTile1} className="box box_1">
+          <div id="1" onClick={placeTile} className="box box_1">
             {box1 === "x" &&
               <X />
             }
@@ -319,7 +277,7 @@ const Board = (props) => {
               <O />
             }
           </div>
-          <div id="2" onClick={setTile2} className="box box_2">
+          <div id="2" onClick={placeTile} className="box box_2">
             {box2 === "x" &&
               <X />
             }
@@ -327,7 +285,7 @@ const Board = (props) => {
               <O />
             }
           </div>
-          <div id="3" onClick={setTile3} className="box box_3">
+          <div id="3" onClick={placeTile} className="box box_3">
             {box3 === "x" &&
               <X />
             }
@@ -335,7 +293,7 @@ const Board = (props) => {
               <O />
             }
           </div>
-          <div id="4" onClick={setTile4} className="box box_4">
+          <div id="4" onClick={placeTile} className="box box_4">
             {box4 === "x" &&
               <X />
             }
@@ -343,7 +301,7 @@ const Board = (props) => {
               <O />
             }
           </div>
-          <div id="5" onClick={setTile5} className="box box_5">
+          <div id="5" onClick={placeTile} className="box box_5">
             {box5 === "x" &&
               <X />
             }
@@ -351,7 +309,7 @@ const Board = (props) => {
               <O />
             }
           </div>
-          <div id="6" onClick={setTile6} className="box box_6">
+          <div id="6" onClick={placeTile} className="box box_6">
             {box6 === "x" &&
               <X />
             }
@@ -359,7 +317,7 @@ const Board = (props) => {
               <O />
             }
           </div>
-          <div id="7" onClick={setTile7} className="box box_7">
+          <div id="7" onClick={placeTile} className="box box_7">
             {box7 === "x" &&
               <X />
             }
@@ -367,7 +325,7 @@ const Board = (props) => {
               <O />
             }
           </div>
-          <div id="8" onClick={setTile8} className="box box_8">
+          <div id="8" onClick={placeTile} className="box box_8">
             {box8 === "x" &&
               <X />
             }
@@ -375,7 +333,7 @@ const Board = (props) => {
               <O />
             }
           </div>
-          <div id="9" onClick={setTile9} className="box box_9">
+          <div id="9" onClick={placeTile} className="box box_9">
             {box9 === "x" &&
               <X />
             }
