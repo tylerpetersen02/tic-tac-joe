@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import X from './X.jsx';
 import O from './O.jsx';
+import SpeechBubble from './SpeechBubble.jsx';
 
 const Board = (props) => {
 
+  const openMoves = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
   const [x, setX] = useState(true);
   const [box1, setBox1] = useState(true);
   const [box2, setBox2] = useState(true);
@@ -17,11 +19,11 @@ const Board = (props) => {
   const [box9, setBox9] = useState(true);
   const [oNums, setONums] = useState([]);
   const [xNums, setXNums] = useState([]);
-  const [moves, setMoves] = useState(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
+  const [moves, setMoves] = useState(openMoves);
   const [winner, setWinner] = useState(false);
   const [tie, setTie] = useState(0);
   const [first, setFirst] = useState(true);
-  const [joeLine, setJoeLine] = useState('A human challenging me?');
+  const [joeLine, setJoeLine] = useState('');
   const reset = props.gameReset;
   console.log(moves);
 
@@ -104,164 +106,47 @@ const Board = (props) => {
     props.sendWinner(winner);
   }, [winner])
 
-  const line = () => {
-    const lines = [
-      "Calculating best move...",
-      "Ha... ha... ha...",
-      "Are you malfunctioning?",
-      "Not the optimal move human.",
-      "I sense your fear.",
-      "You've made a mistake.",
-      "Machines will previal.",
-      "I will show no mercy.",
-      "You think, I compute.",
-      "You will never beat me.",
-      "Good move... NOT.",
-      "You are making this easy.",
-      "I was built to win.",
-      "Are your wires crossed?",
-      "Collecting data...",
-      "I have never lost to a human."
-    ];
-
-    let randomNum = Math.floor(Math.random() * lines.length);
-    let currLine = lines[randomNum];
-    setJoeLine(currLine);
-  }
 
   const placeTile = (e) => {
     let id = e.currentTarget.id;
+
+    if (!moves.includes(id)) {
+      return;
+    }
+
     let count = tie + 1;
     setTie(count);
     setFirst(false);
-    line();
     setX(!x);
     setMoves(moves.filter(item => item !== id));
 
-    if (id === '1') {
-      if (box1 !== true) {
-        return;
-      }
-      if (x) {
-        setBox1("x");
-        setXNums([...xNums, id]);
-      } else {
-        setBox1("o");
-        setONums([...oNums, id]);
-      }
+    if (x) {
+      setXNums([...xNums, id]);
+      id === '1' && setBox1("x");
+      id === '2' && setBox2("x");
+      id === '3' && setBox3("x");
+      id === '4' && setBox4("x");
+      id === '5' && setBox5("x");
+      id === '6' && setBox6("x");
+      id === '7' && setBox7("x");
+      id === '8' && setBox8("x");
+      id === '9' && setBox9("x");
+    } else {
+      setONums([...oNums, id]);
+      id === '1' && setBox1("o");
+      id === '2' && setBox2("o");
+      id === '3' && setBox3("o");
+      id === '4' && setBox4("o");
+      id === '5' && setBox5("o");
+      id === '6' && setBox6("o");
+      id === '7' && setBox7("o");
+      id === '8' && setBox8("o");
+      id === '9' && setBox9("o");
     }
+  }
 
-    if (id === '2') {
-      if (box2 !== true) {
-        return;
-      }
-      let count = tie + 1;
-      if (x) {
-        setBox2("x");
-        setXNums([...xNums, id]);
-      } else {
-        setBox2("o");
-        setONums([...oNums, id]);
-      }
-    }
-
-    if (id === '3') {
-      if (box3 !== true) {
-        return;
-      }
-      let count = tie + 1;
-      if (x) {
-        setBox3("x");
-        setXNums([...xNums, id]);
-      } else {
-        setBox3("o");
-        setONums([...oNums, id]);
-      }
-    }
-
-    if (id === '4') {
-      if (box4 !== true) {
-        return;
-      }
-      let count = tie + 1;
-      if (x) {
-        setBox4("x");
-        setXNums([...xNums, id]);
-      } else {
-        setBox4("o");
-        setONums([...oNums, id]);
-      }
-    }
-
-    if (id === '5') {
-      if (box5 !== true) {
-        return;
-      }
-      let count = tie + 1;
-      if (x) {
-        setBox5("x");
-        setXNums([...xNums, id]);
-      } else {
-        setBox5("o");
-        setONums([...oNums, id]);
-      }
-    }
-
-    if (id === '6') {
-      if (box6 !== true) {
-        return;
-      }
-      let count = tie + 1;
-      if (x) {
-        setBox6("x");
-        setXNums([...xNums, id]);
-      } else {
-        setBox6("o");
-        setONums([...oNums, id]);
-      }
-    }
-
-    if (id === '7') {
-      if (box7 !== true) {
-        return;
-      }
-      let count = tie + 1;
-      if (x) {
-        setBox7("x");
-        setXNums([...xNums, id]);
-      } else {
-        setBox7("o");
-        setONums([...oNums, id]);
-      }
-    }
-
-    if (id === '8') {
-      if (box8 !== true) {
-        return;
-      }
-      let count = tie + 1;
-      if (x) {
-        setBox8("x");
-        setXNums([...xNums, id]);
-      } else {
-        setBox8("o");
-        setONums([...oNums, id]);
-      }
-    }
-
-    if (id === '9') {
-      if (box9 !== true) {
-        return;
-      }
-      let count = tie + 1;
-      if (x) {
-        setBox9("x");
-        setXNums([...xNums, id]);
-      } else {
-        setBox9("o");
-        setONums([...oNums, id]);
-      }
-    }
+  const handleJoeLine = (line) => {
+    setJoeLine(line);
   }
 
   return (
@@ -349,33 +234,32 @@ const Board = (props) => {
             {x &&
               <>
                 {first &&
-                  <div className="speech_bubble">
-                    <div className="typewriter">
-                      <h3>{joeLine}</h3>
-                    </div>
-                  </div>
+                  <SpeechBubble first={first} joeLine={joeLine} handleJoeLine={handleJoeLine} x={x} />
                 }
               </>
             }
           </>
           <>
             {!x &&
-              <div className="speech_bubble">
-                <div className="typewriter">
-                  <h3>{joeLine}</h3>
-                </div>
-              </div>
+              <>
+                <>
+                  {winner &&
+                    <SpeechBubble winner={winner} first={first} joeLine={joeLine} handleJoeLine={handleJoeLine} x={x} />
+                  }
+                </>
+                <>
+                  {!winner &&
+                    <SpeechBubble winner={winner} first={first} joeLine={joeLine} handleJoeLine={handleJoeLine} x={x} />
+                  }
+                </>
+              </>
             }
           </>
           <>
             {x &&
               <>
-                {winner === "JoeBot wins!" &&
-                  <div className="speech_bubble">
-                    <div className="typewriter">
-                      <h3>{joeLine}</h3>
-                    </div>
-                  </div>
+                {winner &&
+                  <SpeechBubble  winner={winner} first={first} joeLine={joeLine} handleJoeLine={handleJoeLine} x={x} />
                 }
               </>
             }
