@@ -51,6 +51,7 @@ const Board = (props) => {
 
     const checkAllWinningCombos = currPlayer => {
       let rounds = 3;
+      let win = false;
 
       const roundsPlayed = function (currentCombo) {
         currentCombo = currentCombo || '';
@@ -61,6 +62,7 @@ const Board = (props) => {
           }
 
           if (winningCombos.includes(currentCombo)) {
+            win = true;
             if (x) {
               setJoeLine("Robots are superior!");
               setWinner("JoeBot wins!");
@@ -75,7 +77,9 @@ const Board = (props) => {
           }
           return;
         }
-
+        if (win) {
+          return;
+        }
         currPlayer.forEach(function (item) {
           roundsPlayed(currentCombo + item);
         })
