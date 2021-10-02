@@ -20,12 +20,12 @@ const Board = (props) => {
   const [oNums, setONums] = useState([]);
   const [xNums, setXNums] = useState([]);
   const [moves, setMoves] = useState(openMoves);
+  const [playerMove, setPlayerMove] = useState(false);
   const [winner, setWinner] = useState(false);
   const [tie, setTie] = useState(0);
   const [first, setFirst] = useState(true);
   const [joeLine, setJoeLine] = useState('');
   const reset = props.gameReset;
-  let playerMove = false;
 
   if (props.gameReset) {
     const gameReset = () => {
@@ -105,7 +105,6 @@ const Board = (props) => {
         '58', '59', '69', '78', '79', '89'
       ]
       const potential = function (currentCombo) {
-        console.log('potential')
         currentCombo = currentCombo || '';
         if (currentCombo.length > 2) {
           return;
@@ -117,6 +116,7 @@ const Board = (props) => {
           }
 
           if (potentialWinningCombos.includes(currentCombo)) {
+            console.log('potential combo', currentCombo)
             const timer = setTimeout(() => {
               switch (currentCombo) {
                 case '12':
@@ -126,7 +126,7 @@ const Board = (props) => {
                   setBox3('o');
                   setONums([...oNums, '3']);
                   setMoves(moves.filter(item => item !== '3'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -137,7 +137,7 @@ const Board = (props) => {
                   setBox2('o');
                   setONums([...oNums, '3']);
                   setMoves(moves.filter(item => item !== '3'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -148,7 +148,7 @@ const Board = (props) => {
                   setBox7('o');
                   setONums([...oNums, '7']);
                   setMoves(moves.filter(item => item !== '7'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -159,7 +159,7 @@ const Board = (props) => {
                   setBox9('o');
                   setONums([...oNums, '9']);
                   setMoves(moves.filter(item => item !== '9'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -170,7 +170,7 @@ const Board = (props) => {
                   setBox4('o');
                   setONums([...oNums, '4']);
                   setMoves(moves.filter(item => item !== '4'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -181,7 +181,7 @@ const Board = (props) => {
                   setBox5('o');
                   setONums([...oNums, '5']);
                   setMoves(moves.filter(item => item !== '5'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -192,7 +192,7 @@ const Board = (props) => {
                   setBox1('o');
                   setONums([...oNums, '1']);
                   setMoves(moves.filter(item => item !== '1'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -203,7 +203,7 @@ const Board = (props) => {
                   setBox8('o');
                   setONums([...oNums, '8']);
                   setMoves(moves.filter(item => item !== '8'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -214,7 +214,7 @@ const Board = (props) => {
                   setBox5('o');
                   setONums([...oNums, '5']);
                   setMoves(moves.filter(item => item !== '5'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -225,7 +225,7 @@ const Board = (props) => {
                   setBox7('o');
                   setONums([...oNums, '7']);
                   setMoves(moves.filter(item => item !== '7'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -236,7 +236,7 @@ const Board = (props) => {
                   setBox9('o');
                   setONums([...oNums, '9']);
                   setMoves(moves.filter(item => item !== '9'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -247,7 +247,7 @@ const Board = (props) => {
                   setBox5('o');
                   setONums([...oNums, '5']);
                   setMoves(moves.filter(item => item !== '5'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -258,7 +258,7 @@ const Board = (props) => {
                   setBox6('o');
                   setONums([...oNums, '6']);
                   setMoves(moves.filter(item => item !== '6'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -269,7 +269,7 @@ const Board = (props) => {
                   setBox6('o');
                   setONums([...oNums, '6']);
                   setMoves(moves.filter(item => item !== '6'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -280,7 +280,7 @@ const Board = (props) => {
                   setBox5('o');
                   setONums([...oNums, '5']);
                   setMoves(moves.filter(item => item !== '5'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -291,7 +291,7 @@ const Board = (props) => {
                   setBox1('o');
                   setONums([...oNums, '1']);
                   setMoves(moves.filter(item => item !== '1'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -302,7 +302,7 @@ const Board = (props) => {
                   setBox4('o');
                   setONums([...oNums, '4']);
                   setMoves(moves.filter(item => item !== '4'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -313,7 +313,7 @@ const Board = (props) => {
                   setBox3('o');
                   setONums([...oNums, '3']);
                   setMoves(moves.filter(item => item !== '3'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -324,7 +324,7 @@ const Board = (props) => {
                   setBox2('o');
                   setONums([...oNums, '2']);
                   setMoves(moves.filter(item => item !== '2'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -335,7 +335,7 @@ const Board = (props) => {
                   setBox1('o');
                   setONums([...oNums, '1']);
                   setMoves(moves.filter(item => item !== '1'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -346,7 +346,7 @@ const Board = (props) => {
                   setBox3('o');
                   setONums([...oNums, '3']);
                   setMoves(moves.filter(item => item !== '3'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -357,7 +357,7 @@ const Board = (props) => {
                   setBox9('o');
                   setONums([...oNums, '9']);
                   setMoves(moves.filter(item => item !== '9'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -368,7 +368,7 @@ const Board = (props) => {
                   setBox8('o');
                   setONums([...oNums, '8']);
                   setMoves(moves.filter(item => item !== '8'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -379,7 +379,7 @@ const Board = (props) => {
                   setBox7('o');
                   setONums([...oNums, '7']);
                   setMoves(moves.filter(item => item !== '7'));
-                  playerMove = true;
+                  setPlayerMove(true);
                   setTie(tie + 1);
                   setX(true);
                   return;
@@ -398,17 +398,17 @@ const Board = (props) => {
             potential(currentCombo + item);
           });
         }
-        console.log(playerMove);
-        console.log(currentCombo);
+        console.log('playerMover combo', playerMove);
         return;
       };
       potential();
+
+      return;
     }
 
 
     const randomSpot = () => {
       console.log('random')
-      playerMove = true;
 
       const timer = setTimeout(() => {
         let random = Math.floor(Math.random() * (moves.length - 1) + 1);
@@ -444,6 +444,7 @@ const Board = (props) => {
         }
         setMoves(moves.filter(item => item !== moves[random]));
         setONums([...oNums, moves[random]]);
+        setPlayerMove(true);
         setX(true);
       }, 2500);
       return () => clearTimeout(timer);
@@ -453,29 +454,28 @@ const Board = (props) => {
     console.log('playerMove : ', playerMove, ' x : ', x)
 
     if (!playerMove && !x) {
+      console.log('first', oNums.length, xNums.length)
       checkPotentialWinningCombos(xNums);
     }
 
-    if (playerMove) {
-      return;
-    }
-
+    console.log('playerMove2 : ', playerMove, ' x2 : ', x)
     if (!playerMove && !x) {
       if (moves.includes('5')) {
         const timer = setTimeout(() => {
           setBox5('o');
           setMoves(moves.filter(item => item !== '5'));
           setONums([...oNums, '5']);
-          playerMove = true;
+          setPlayerMove(true);
           setX(true);
-          return;
         }, 2500);
         return () => clearTimeout(timer);
       } else {
+        console.log('random', oNums.length, xNums.length)
         randomSpot();
-        return;
       }
     }
+    console.log('last', oNums.length, xNums.length)
+    console.log('----------------------------------------')
     return;
   }, [x])
 
@@ -505,8 +505,9 @@ const Board = (props) => {
       id === '7' && setBox7("x");
       id === '8' && setBox8("x");
       id === '9' && setBox9("x");
-      playerMove = false;
+      setPlayerMove(false);
       setX(false);
+      console.log('___________')
     }
 
   }

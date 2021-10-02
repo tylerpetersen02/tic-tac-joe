@@ -31,7 +31,6 @@ const SpeechBubble = (props) => {
 
           let randomNum = Math.floor(Math.random() * lines.length);
           let currLine = lines[randomNum];
-          console.log(currLine);
           props.handleJoeLine(currLine);
         };
 
