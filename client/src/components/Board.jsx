@@ -20,7 +20,7 @@ const Board = (props) => {
   const [oNums, setONums] = useState([]);
   const [xNums, setXNums] = useState([]);
   const [moves, setMoves] = useState(openMoves);
-  const [playerMove, setPlayerMove] = useState(false);
+  const [joeMove, setJoeMove] = useState(true);
   const [winner, setWinner] = useState(false);
   const [tie, setTie] = useState(0);
   const [first, setFirst] = useState(true);
@@ -47,6 +47,10 @@ const Board = (props) => {
       setFirst(true);
       props.gameResetFinal();
     }
+  }
+
+  const handleJoeLine = (line) => {
+    setJoeLine(line);
   }
 
   const checkAllWinningCombos = currPlayer => {
@@ -93,396 +97,299 @@ const Board = (props) => {
 
   };
 
-  useEffect(() => {
-    checkAllWinningCombos(xNums);
-    checkAllWinningCombos(oNums);
 
-    const checkPotentialWinningCombos = (currPlayer) => {
-      const potentialWinningCombos = [
-        '12', '13', '14', '15', '17', '19',
-        '23', '25', '28', '35', '36', '37',
-        '39', '45', '46', '47', '56', '57',
-        '58', '59', '69', '78', '79', '89'
-      ]
-      const potential = function (currentCombo) {
-        currentCombo = currentCombo || '';
-        if (currentCombo.length > 2) {
-          return;
-        }
+  const checkPotentialWinningCombos = (currPlayer) => {
+    const potentialWinningCombos = [
+      '12', '13', '14', '15', '17', '19',
+      '23', '25', '28', '35', '36', '37',
+      '39', '45', '46', '47', '56', '57',
+      '58', '59', '69', '78', '79', '89'
+    ]
+    console.log(currPlayer)
+    const potential = function (currentCombo) {
+      currentCombo = currentCombo || '';
 
-        if (currentCombo.length === 2) {
-          if (currentCombo[0] === currentCombo[1]) {
-            return;
-          }
-
-          if (potentialWinningCombos.includes(currentCombo)) {
-            console.log('potential combo', currentCombo)
-            const timer = setTimeout(() => {
-              switch (currentCombo) {
-                case '12':
-                  if (!moves.includes('3')) {
-                    break;
-                  }
-                  setBox3('o');
-                  setONums([...oNums, '3']);
-                  setMoves(moves.filter(item => item !== '3'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '13':
-                  if (!moves.includes('3')) {
-                    break;
-                  }
-                  setBox2('o');
-                  setONums([...oNums, '3']);
-                  setMoves(moves.filter(item => item !== '3'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '14':
-                  if (!moves.includes('7')) {
-                    break;
-                  }
-                  setBox7('o');
-                  setONums([...oNums, '7']);
-                  setMoves(moves.filter(item => item !== '7'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '15':
-                  if (!moves.includes('9')) {
-                    break;
-                  }
-                  setBox9('o');
-                  setONums([...oNums, '9']);
-                  setMoves(moves.filter(item => item !== '9'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '17':
-                  if (!moves.includes('4')) {
-                    break;
-                  }
-                  setBox4('o');
-                  setONums([...oNums, '4']);
-                  setMoves(moves.filter(item => item !== '4'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '19':
-                  if (!moves.includes('5')) {
-                    break;
-                  }
-                  setBox5('o');
-                  setONums([...oNums, '5']);
-                  setMoves(moves.filter(item => item !== '5'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '23':
-                  if (!moves.includes('1')) {
-                    break;
-                  }
-                  setBox1('o');
-                  setONums([...oNums, '1']);
-                  setMoves(moves.filter(item => item !== '1'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '25':
-                  if (!moves.includes('8')) {
-                    break;
-                  }
-                  setBox8('o');
-                  setONums([...oNums, '8']);
-                  setMoves(moves.filter(item => item !== '8'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '28':
-                  if (!moves.includes('5')) {
-                    break;
-                  }
-                  setBox5('o');
-                  setONums([...oNums, '5']);
-                  setMoves(moves.filter(item => item !== '5'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '35':
-                  if (!moves.includes('7')) {
-                    break;
-                  }
-                  setBox7('o');
-                  setONums([...oNums, '7']);
-                  setMoves(moves.filter(item => item !== '7'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '36':
-                  if (!moves.includes('9')) {
-                    break;
-                  }
-                  setBox9('o');
-                  setONums([...oNums, '9']);
-                  setMoves(moves.filter(item => item !== '9'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '37':
-                  if (!moves.includes('5')) {
-                    break;
-                  }
-                  setBox5('o');
-                  setONums([...oNums, '5']);
-                  setMoves(moves.filter(item => item !== '5'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '39':
-                  if (!moves.includes('6')) {
-                    break;
-                  }
-                  setBox6('o');
-                  setONums([...oNums, '6']);
-                  setMoves(moves.filter(item => item !== '6'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '45':
-                  if (!moves.includes('6')) {
-                    break;
-                  }
-                  setBox6('o');
-                  setONums([...oNums, '6']);
-                  setMoves(moves.filter(item => item !== '6'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '46':
-                  if (!moves.includes('5')) {
-                    break;
-                  }
-                  setBox5('o');
-                  setONums([...oNums, '5']);
-                  setMoves(moves.filter(item => item !== '5'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '47':
-                  if (!moves.includes('1')) {
-                    break;
-                  }
-                  setBox1('o');
-                  setONums([...oNums, '1']);
-                  setMoves(moves.filter(item => item !== '1'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '56':
-                  if (!moves.includes('4')) {
-                    break;
-                  }
-                  setBox4('o');
-                  setONums([...oNums, '4']);
-                  setMoves(moves.filter(item => item !== '4'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '57':
-                  if (!moves.includes('3')) {
-                    break;
-                  }
-                  setBox3('o');
-                  setONums([...oNums, '3']);
-                  setMoves(moves.filter(item => item !== '3'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '58':
-                  if (!moves.includes('2')) {
-                    break;
-                  }
-                  setBox2('o');
-                  setONums([...oNums, '2']);
-                  setMoves(moves.filter(item => item !== '2'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '59':
-                  if (!moves.includes('1')) {
-                    break;
-                  }
-                  setBox1('o');
-                  setONums([...oNums, '1']);
-                  setMoves(moves.filter(item => item !== '1'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '69':
-                  if (!moves.includes('3')) {
-                    break;
-                  }
-                  setBox3('o');
-                  setONums([...oNums, '3']);
-                  setMoves(moves.filter(item => item !== '3'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '78':
-                  if (!moves.includes('9')) {
-                    break;
-                  }
-                  setBox9('o');
-                  setONums([...oNums, '9']);
-                  setMoves(moves.filter(item => item !== '9'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '79':
-                  if (!moves.includes('8')) {
-                    break;
-                  }
-                  setBox8('o');
-                  setONums([...oNums, '8']);
-                  setMoves(moves.filter(item => item !== '8'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-                case '89':
-                  if (!moves.includes('7')) {
-                    break;
-                  }
-                  setBox7('o');
-                  setONums([...oNums, '7']);
-                  setMoves(moves.filter(item => item !== '7'));
-                  setPlayerMove(true);
-                  setTie(tie + 1);
-                  setX(true);
-                  return;
-              }
-            }, 2500);
-            return () => clearTimeout(timer);
-          }
-        }
-        // if (!playerMove) {
-        //   joeBot.forEach(item => {
-        //     potential(currentCombo + item);
-        //   });
-        // }
-        if (!playerMove) {
-          currPlayer.forEach(item => {
-            potential(currentCombo + item);
-          });
-        }
-        console.log('playerMover combo', playerMove);
-        return;
-      };
-      potential();
-
-      return;
-    }
-
-
-    const randomSpot = () => {
-      console.log('random')
-
-      const timer = setTimeout(() => {
-        let random = Math.floor(Math.random() * (moves.length - 1) + 1);
-
-        switch (moves[random]) {
-          case '1':
-            setBox1('o');
-            break;
-          case '2':
-            setBox2('o');
-            break;
-          case '3':
-            setBox3('o');
-            break;
-          case '4':
-            setBox4('o');
-            break;
-          case '5':
-            setBox5('o');
-            break;
-          case '6':
-            setBox6('o');
-            break;
-          case '7':
-            setBox7('o');
-            break;
-          case '8':
-            setBox8('o');
-            break;
-          case '9':
-            setBox9('o');
-            break;
-        }
-        setMoves(moves.filter(item => item !== moves[random]));
-        setONums([...oNums, moves[random]]);
-        setPlayerMove(true);
-        setX(true);
-      }, 2500);
-      return () => clearTimeout(timer);
-    }
-
-
-    console.log('playerMove : ', playerMove, ' x : ', x)
-
-    if (!playerMove && !x) {
-      console.log('first', oNums.length, xNums.length)
-      checkPotentialWinningCombos(xNums);
-    }
-
-    console.log('playerMove2 : ', playerMove, ' x2 : ', x)
-    if (!playerMove && !x) {
-      if (moves.includes('5')) {
+      if (
+        currentCombo.length === 2
+        && currentCombo[0] !== currentCombo[1]
+        && potentialWinningCombos.includes(currentCombo)
+      ) {
+        console.log(currentCombo)
+        setJoeMove(true);
         const timer = setTimeout(() => {
-          setBox5('o');
-          setMoves(moves.filter(item => item !== '5'));
-          setONums([...oNums, '5']);
-          setPlayerMove(true);
+          switch (currentCombo) {
+            case '12':
+              if (!moves.includes('3')) {
+                break;
+              }
+              setBox3('o');
+              setONums([...oNums, '3']);
+              setMoves(moves.filter(item => item !== '3'));
+              return;
+            case '13':
+              if (!moves.includes('3')) {
+                break;
+              }
+              setBox2('o');
+              setONums([...oNums, '3']);
+              setMoves(moves.filter(item => item !== '3'));
+              return;
+            case '14':
+              if (!moves.includes('7')) {
+                break;
+              }
+              setBox7('o');
+              setONums([...oNums, '7']);
+              setMoves(moves.filter(item => item !== '7'));
+              return;
+            case '15':
+              if (!moves.includes('9')) {
+                break;
+              }
+              setBox9('o');
+              setONums([...oNums, '9']);
+              setMoves(moves.filter(item => item !== '9'));
+              return;
+            case '17':
+              if (!moves.includes('4')) {
+                break;
+              }
+              setBox4('o');
+              setONums([...oNums, '4']);
+              setMoves(moves.filter(item => item !== '4'));
+              return;
+            case '19':
+              if (!moves.includes('5')) {
+                break;
+              }
+              setBox5('o');
+              setONums([...oNums, '5']);
+              setMoves(moves.filter(item => item !== '5'));
+              return;
+            case '23':
+              if (!moves.includes('1')) {
+                break;
+              }
+              setBox1('o');
+              setONums([...oNums, '1']);
+              setMoves(moves.filter(item => item !== '1'));
+              return;
+            case '25':
+              if (!moves.includes('8')) {
+                break;
+              }
+              setBox8('o');
+              setONums([...oNums, '8']);
+              setMoves(moves.filter(item => item !== '8'));
+              return;
+            case '28':
+              if (!moves.includes('5')) {
+                break;
+              }
+              setBox5('o');
+              setONums([...oNums, '5']);
+              setMoves(moves.filter(item => item !== '5'));
+              return;
+            case '35':
+              if (!moves.includes('7')) {
+                break;
+              }
+              setBox7('o');
+              setONums([...oNums, '7']);
+              setMoves(moves.filter(item => item !== '7'));
+              return;
+            case '36':
+              if (!moves.includes('9')) {
+                break;
+              }
+              setBox9('o');
+              setONums([...oNums, '9']);
+              setMoves(moves.filter(item => item !== '9'));
+              return;
+            case '37':
+              if (!moves.includes('5')) {
+                break;
+              }
+              setBox5('o');
+              setONums([...oNums, '5']);
+              setMoves(moves.filter(item => item !== '5'));
+              return;
+            case '39':
+              if (!moves.includes('6')) {
+                break;
+              }
+              setBox6('o');
+              setONums([...oNums, '6']);
+              setMoves(moves.filter(item => item !== '6'));
+              return;
+            case '45':
+              if (!moves.includes('6')) {
+                break;
+              }
+              setBox6('o');
+              setONums([...oNums, '6']);
+              setMoves(moves.filter(item => item !== '6'));
+              return;
+            case '46':
+              if (!moves.includes('5')) {
+                break;
+              }
+              setBox5('o');
+              setONums([...oNums, '5']);
+              setMoves(moves.filter(item => item !== '5'));
+              return;
+            case '47':
+              if (!moves.includes('1')) {
+                break;
+              }
+              setBox1('o');
+              setONums([...oNums, '1']);
+              setMoves(moves.filter(item => item !== '1'));
+              return;
+            case '56':
+              if (!moves.includes('4')) {
+                break;
+              }
+              setBox4('o');
+              setONums([...oNums, '4']);
+              setMoves(moves.filter(item => item !== '4'));
+              return;
+            case '57':
+              if (!moves.includes('3')) {
+                break;
+              }
+              setBox3('o');
+              setONums([...oNums, '3']);
+              setMoves(moves.filter(item => item !== '3'));
+              return;
+            case '58':
+              if (!moves.includes('2')) {
+                break;
+              }
+              setBox2('o');
+              setONums([...oNums, '2']);
+              setMoves(moves.filter(item => item !== '2'));
+              return;
+            case '59':
+              if (!moves.includes('1')) {
+                break;
+              }
+              setBox1('o');
+              setONums([...oNums, '1']);
+              setMoves(moves.filter(item => item !== '1'));
+              return;
+            case '69':
+              if (!moves.includes('3')) {
+                break;
+              }
+              setBox3('o');
+              setONums([...oNums, '3']);
+              setMoves(moves.filter(item => item !== '3'));
+              return;
+            case '78':
+              if (!moves.includes('9')) {
+                break;
+              }
+              setBox9('o');
+              setONums([...oNums, '9']);
+              setMoves(moves.filter(item => item !== '9'));
+              return;
+            case '79':
+              if (!moves.includes('8')) {
+                break;
+              }
+              setBox8('o');
+              setONums([...oNums, '8']);
+              setMoves(moves.filter(item => item !== '8'));
+              return;
+            case '89':
+              if (!moves.includes('7')) {
+                break;
+              }
+              setBox7('o');
+              setONums([...oNums, '7']);
+              setMoves(moves.filter(item => item !== '7'));
+              return;
+          }
+          setJoeMove(true);
+          setTie(tie + 1);
           setX(true);
         }, 2500);
         return () => clearTimeout(timer);
-      } else {
-        console.log('random', oNums.length, xNums.length)
-        randomSpot();
+      } else if (currentCombo.length > 2) {
+        return;
       }
-    }
-    console.log('last', oNums.length, xNums.length)
-    console.log('----------------------------------------')
+
+      // if (!joeMove) {
+      //   joeBot.forEach(item => {
+      //     potential(currentCombo + item);
+      //   });
+      // }
+
+      currPlayer.forEach(item => {
+        potential(currentCombo + item);
+      });
+
+      return;
+    };
+    potential();
+
     return;
-  }, [x])
+  }
 
-  useEffect(() => {
-    props.sendWinner(winner);
-  }, [winner])
+  const randomSpot = () => {
+    console.log('random')
 
+    const timer = setTimeout(() => {
+      let random = Math.floor(Math.random() * (moves.length - 1) + 1);
+
+      switch (moves[random]) {
+        case '1':
+          setBox1('o');
+          break;
+        case '2':
+          setBox2('o');
+          break;
+        case '3':
+          setBox3('o');
+          break;
+        case '4':
+          setBox4('o');
+          break;
+        case '5':
+          setBox5('o');
+          break;
+        case '6':
+          setBox6('o');
+          break;
+        case '7':
+          setBox7('o');
+          break;
+        case '8':
+          setBox8('o');
+          break;
+        case '9':
+          setBox9('o');
+          break;
+      }
+      setMoves(moves.filter(item => item !== moves[random]));
+      setONums([...oNums, moves[random]]);
+      setJoeMove(true);
+      setX(true);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }
+
+  const chooseMiddle = () => {
+    const timer = setTimeout(() => {
+      setBox5('o');
+      setMoves(moves.filter(item => item !== '5'));
+      setONums([...oNums, '5']);
+      setJoeMove(true);
+      setX(true);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }
 
   const placeTile = (e) => {
     let id = e.currentTarget.id;
@@ -505,16 +412,43 @@ const Board = (props) => {
       id === '7' && setBox7("x");
       id === '8' && setBox8("x");
       id === '9' && setBox9("x");
-      setPlayerMove(false);
-      setX(false);
-      console.log('___________')
     }
+    setJoeMove(false);
+    setX(false);
+  }
+
+  const handleJoeMove = () => {
 
   }
 
-  const handleJoeLine = (line) => {
-    setJoeLine(line);
-  }
+  useEffect(() => {
+    checkAllWinningCombos(oNums);
+    checkAllWinningCombos(xNums);
+  }, [x])
+
+  useEffect(() => {
+    if (!joeMove && !x) {
+      checkPotentialWinningCombos(xNums);
+      forceUpdate();
+    }
+  }, [x])
+
+  console.log('joeMove : ', joeMove, ' x : ', x)
+
+  useEffect(() => {
+    if (!joeMove && !x) {
+      if (moves.includes('5')) {
+        chooseMiddle();
+      } else {
+        randomSpot();
+      }
+    }
+    console.log('----------------------------------------')
+  }, [joeMove])
+
+  useEffect(() => {
+    props.sendWinner(winner);
+  }, [winner])
 
   return (
     <div>
