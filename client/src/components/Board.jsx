@@ -21,6 +21,8 @@ const Board = (props) => {
   const [xNums, setXNums] = useState([]);
   const [moves, setMoves] = useState(openMoves);
   const [joeMove, setJoeMove] = useState(true);
+  const [xPotential, setXPotential] = useState(true);
+  const [toggle, setToggle] = useState(true);
   const [winner, setWinner] = useState(false);
   const [tie, setTie] = useState(0);
   const [first, setFirst] = useState(true);
@@ -43,6 +45,9 @@ const Board = (props) => {
       setXNums([]);
       setWinner(false);
       setMoves(openMoves);
+      setJoeMove(true);
+      setXPotential(true);
+      setToggle(true);
       setTie(0);
       setFirst(true);
       props.gameResetFinal();
@@ -99,6 +104,7 @@ const Board = (props) => {
 
 
   const checkPotentialWinningCombos = (currPlayer) => {
+    let flip = false;
     const potentialWinningCombos = [
       '12', '13', '14', '15', '17', '19',
       '23', '25', '28', '35', '36', '37',
@@ -113,9 +119,9 @@ const Board = (props) => {
         currentCombo.length === 2
         && currentCombo[0] !== currentCombo[1]
         && potentialWinningCombos.includes(currentCombo)
+        && !flip
       ) {
         console.log(currentCombo)
-        setJoeMove(true);
         const timer = setTimeout(() => {
           switch (currentCombo) {
             case '12':
@@ -125,6 +131,11 @@ const Board = (props) => {
               setBox3('o');
               setONums([...oNums, '3']);
               setMoves(moves.filter(item => item !== '3'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '13':
               if (!moves.includes('3')) {
@@ -133,6 +144,11 @@ const Board = (props) => {
               setBox2('o');
               setONums([...oNums, '3']);
               setMoves(moves.filter(item => item !== '3'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '14':
               if (!moves.includes('7')) {
@@ -141,6 +157,11 @@ const Board = (props) => {
               setBox7('o');
               setONums([...oNums, '7']);
               setMoves(moves.filter(item => item !== '7'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '15':
               if (!moves.includes('9')) {
@@ -149,6 +170,11 @@ const Board = (props) => {
               setBox9('o');
               setONums([...oNums, '9']);
               setMoves(moves.filter(item => item !== '9'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '17':
               if (!moves.includes('4')) {
@@ -157,6 +183,11 @@ const Board = (props) => {
               setBox4('o');
               setONums([...oNums, '4']);
               setMoves(moves.filter(item => item !== '4'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '19':
               if (!moves.includes('5')) {
@@ -165,6 +196,11 @@ const Board = (props) => {
               setBox5('o');
               setONums([...oNums, '5']);
               setMoves(moves.filter(item => item !== '5'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '23':
               if (!moves.includes('1')) {
@@ -173,6 +209,11 @@ const Board = (props) => {
               setBox1('o');
               setONums([...oNums, '1']);
               setMoves(moves.filter(item => item !== '1'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '25':
               if (!moves.includes('8')) {
@@ -181,6 +222,11 @@ const Board = (props) => {
               setBox8('o');
               setONums([...oNums, '8']);
               setMoves(moves.filter(item => item !== '8'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '28':
               if (!moves.includes('5')) {
@@ -189,6 +235,11 @@ const Board = (props) => {
               setBox5('o');
               setONums([...oNums, '5']);
               setMoves(moves.filter(item => item !== '5'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '35':
               if (!moves.includes('7')) {
@@ -197,6 +248,11 @@ const Board = (props) => {
               setBox7('o');
               setONums([...oNums, '7']);
               setMoves(moves.filter(item => item !== '7'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '36':
               if (!moves.includes('9')) {
@@ -205,6 +261,11 @@ const Board = (props) => {
               setBox9('o');
               setONums([...oNums, '9']);
               setMoves(moves.filter(item => item !== '9'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '37':
               if (!moves.includes('5')) {
@@ -213,6 +274,11 @@ const Board = (props) => {
               setBox5('o');
               setONums([...oNums, '5']);
               setMoves(moves.filter(item => item !== '5'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '39':
               if (!moves.includes('6')) {
@@ -221,6 +287,11 @@ const Board = (props) => {
               setBox6('o');
               setONums([...oNums, '6']);
               setMoves(moves.filter(item => item !== '6'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '45':
               if (!moves.includes('6')) {
@@ -229,6 +300,11 @@ const Board = (props) => {
               setBox6('o');
               setONums([...oNums, '6']);
               setMoves(moves.filter(item => item !== '6'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '46':
               if (!moves.includes('5')) {
@@ -237,6 +313,11 @@ const Board = (props) => {
               setBox5('o');
               setONums([...oNums, '5']);
               setMoves(moves.filter(item => item !== '5'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '47':
               if (!moves.includes('1')) {
@@ -245,6 +326,11 @@ const Board = (props) => {
               setBox1('o');
               setONums([...oNums, '1']);
               setMoves(moves.filter(item => item !== '1'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '56':
               if (!moves.includes('4')) {
@@ -253,6 +339,11 @@ const Board = (props) => {
               setBox4('o');
               setONums([...oNums, '4']);
               setMoves(moves.filter(item => item !== '4'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '57':
               if (!moves.includes('3')) {
@@ -261,6 +352,11 @@ const Board = (props) => {
               setBox3('o');
               setONums([...oNums, '3']);
               setMoves(moves.filter(item => item !== '3'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '58':
               if (!moves.includes('2')) {
@@ -269,6 +365,11 @@ const Board = (props) => {
               setBox2('o');
               setONums([...oNums, '2']);
               setMoves(moves.filter(item => item !== '2'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '59':
               if (!moves.includes('1')) {
@@ -277,6 +378,11 @@ const Board = (props) => {
               setBox1('o');
               setONums([...oNums, '1']);
               setMoves(moves.filter(item => item !== '1'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '69':
               if (!moves.includes('3')) {
@@ -285,6 +391,11 @@ const Board = (props) => {
               setBox3('o');
               setONums([...oNums, '3']);
               setMoves(moves.filter(item => item !== '3'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '78':
               if (!moves.includes('9')) {
@@ -293,6 +404,11 @@ const Board = (props) => {
               setBox9('o');
               setONums([...oNums, '9']);
               setMoves(moves.filter(item => item !== '9'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '79':
               if (!moves.includes('8')) {
@@ -301,6 +417,11 @@ const Board = (props) => {
               setBox8('o');
               setONums([...oNums, '8']);
               setMoves(moves.filter(item => item !== '8'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
             case '89':
               if (!moves.includes('7')) {
@@ -309,11 +430,13 @@ const Board = (props) => {
               setBox7('o');
               setONums([...oNums, '7']);
               setMoves(moves.filter(item => item !== '7'));
+              setXPotential(true);
+              setJoeMove(true);
+              setTie(tie + 1);
+              setX(true);
+              flip = true;
               return;
           }
-          setJoeMove(true);
-          setTie(tie + 1);
-          setX(true);
         }, 2500);
         return () => clearTimeout(timer);
       } else if (currentCombo.length > 2) {
@@ -333,16 +456,27 @@ const Board = (props) => {
       return;
     };
     potential();
+    console.log('flip : ', flip)
 
+    if (!flip) {
+      setXPotential(false);
+    }
+
+    setToggle(!toggle);
     return;
   }
 
   const randomSpot = () => {
     console.log('random')
 
-    const timer = setTimeout(() => {
-      let random = Math.floor(Math.random() * (moves.length - 1) + 1);
+    const random = Math.floor(Math.random() * (moves.length - 1) + 1);
+    setMoves(moves.filter(item => item !== moves[random]));
+    setONums([...oNums, moves[random]]);
+    setXPotential(true);
+    setJoeMove(true);
+    setX(true);
 
+    const timer = setTimeout(() => {
       switch (moves[random]) {
         case '1':
           setBox1('o');
@@ -372,10 +506,6 @@ const Board = (props) => {
           setBox9('o');
           break;
       }
-      setMoves(moves.filter(item => item !== moves[random]));
-      setONums([...oNums, moves[random]]);
-      setJoeMove(true);
-      setX(true);
     }, 2500);
     return () => clearTimeout(timer);
   }
@@ -385,6 +515,7 @@ const Board = (props) => {
       setBox5('o');
       setMoves(moves.filter(item => item !== '5'));
       setONums([...oNums, '5']);
+      setXPotential(true);
       setJoeMove(true);
       setX(true);
     }, 2500);
@@ -399,6 +530,9 @@ const Board = (props) => {
     }
 
     setFirst(false);
+    setJoeMove(false);
+    setXPotential(true);
+    setX(false);
     setMoves(moves.filter(item => item !== id));
 
     if (x) {
@@ -413,8 +547,6 @@ const Board = (props) => {
       id === '8' && setBox8("x");
       id === '9' && setBox9("x");
     }
-    setJoeMove(false);
-    setX(false);
   }
 
   const handleJoeMove = () => {
@@ -424,19 +556,16 @@ const Board = (props) => {
   useEffect(() => {
     checkAllWinningCombos(oNums);
     checkAllWinningCombos(xNums);
-  }, [x])
 
-  useEffect(() => {
-    if (!joeMove && !x) {
+    if (!joeMove && xPotential && !x) {
       checkPotentialWinningCombos(xNums);
-      forceUpdate();
     }
-  }, [x])
+  }, [x, toggle, xNums, oNums])
 
-  console.log('joeMove : ', joeMove, ' x : ', x)
+  console.log('joeMove : ', joeMove, 'xPotential : ', xPotential, ' x : ', x)
 
   useEffect(() => {
-    if (!joeMove && !x) {
+    if (!joeMove && !xPotential && !x) {
       if (moves.includes('5')) {
         chooseMiddle();
       } else {
@@ -444,7 +573,7 @@ const Board = (props) => {
       }
     }
     console.log('----------------------------------------')
-  }, [joeMove])
+  }, [toggle])
 
   useEffect(() => {
     props.sendWinner(winner);
