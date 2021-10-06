@@ -21,11 +21,8 @@ const Board = (props) => {
   const [xNums, setXNums] = useState([]);
   const [moves, setMoves] = useState(openMoves);
   const [joeMove, setJoeMove] = useState(true);
-<<<<<<< HEAD
   const [xPotential, setXPotential] = useState(true);
   const [toggle, setToggle] = useState(true);
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
   const [winner, setWinner] = useState(false);
   const [tie, setTie] = useState(0);
   const [first, setFirst] = useState(true);
@@ -107,10 +104,7 @@ const Board = (props) => {
 
 
   const checkPotentialWinningCombos = (currPlayer) => {
-<<<<<<< HEAD
     let flip = false;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
     const potentialWinningCombos = [
       '12', '13', '14', '15', '17', '19',
       '23', '25', '28', '35', '36', '37',
@@ -125,15 +119,9 @@ const Board = (props) => {
         currentCombo.length === 2
         && currentCombo[0] !== currentCombo[1]
         && potentialWinningCombos.includes(currentCombo)
-<<<<<<< HEAD
         && !flip
       ) {
         console.log(currentCombo)
-=======
-      ) {
-        console.log(currentCombo)
-        setJoeMove(true);
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
         const timer = setTimeout(() => {
           switch (currentCombo) {
             case '12':
@@ -143,14 +131,11 @@ const Board = (props) => {
               setBox3('o');
               setONums([...oNums, '3']);
               setMoves(moves.filter(item => item !== '3'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '13':
               if (!moves.includes('3')) {
@@ -159,14 +144,11 @@ const Board = (props) => {
               setBox2('o');
               setONums([...oNums, '3']);
               setMoves(moves.filter(item => item !== '3'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '14':
               if (!moves.includes('7')) {
@@ -175,14 +157,11 @@ const Board = (props) => {
               setBox7('o');
               setONums([...oNums, '7']);
               setMoves(moves.filter(item => item !== '7'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '15':
               if (!moves.includes('9')) {
@@ -191,14 +170,11 @@ const Board = (props) => {
               setBox9('o');
               setONums([...oNums, '9']);
               setMoves(moves.filter(item => item !== '9'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '17':
               if (!moves.includes('4')) {
@@ -207,14 +183,11 @@ const Board = (props) => {
               setBox4('o');
               setONums([...oNums, '4']);
               setMoves(moves.filter(item => item !== '4'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '19':
               if (!moves.includes('5')) {
@@ -223,14 +196,11 @@ const Board = (props) => {
               setBox5('o');
               setONums([...oNums, '5']);
               setMoves(moves.filter(item => item !== '5'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '23':
               if (!moves.includes('1')) {
@@ -239,14 +209,11 @@ const Board = (props) => {
               setBox1('o');
               setONums([...oNums, '1']);
               setMoves(moves.filter(item => item !== '1'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '25':
               if (!moves.includes('8')) {
@@ -255,14 +222,11 @@ const Board = (props) => {
               setBox8('o');
               setONums([...oNums, '8']);
               setMoves(moves.filter(item => item !== '8'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '28':
               if (!moves.includes('5')) {
@@ -271,14 +235,11 @@ const Board = (props) => {
               setBox5('o');
               setONums([...oNums, '5']);
               setMoves(moves.filter(item => item !== '5'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '35':
               if (!moves.includes('7')) {
@@ -287,19 +248,15 @@ const Board = (props) => {
               setBox7('o');
               setONums([...oNums, '7']);
               setMoves(moves.filter(item => item !== '7'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '36':
               if (!moves.includes('9')) {
                 break;
-<<<<<<< HEAD
               }
               setBox9('o');
               setONums([...oNums, '9']);
@@ -443,108 +400,15 @@ const Board = (props) => {
             case '78':
               if (!moves.includes('9')) {
                 break;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               }
               setBox9('o');
               setONums([...oNums, '9']);
               setMoves(moves.filter(item => item !== '9'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
-              return;
-            case '37':
-              if (!moves.includes('5')) {
-                break;
-              }
-              setBox5('o');
-              setONums([...oNums, '5']);
-              setMoves(moves.filter(item => item !== '5'));
-              return;
-            case '39':
-              if (!moves.includes('6')) {
-                break;
-              }
-              setBox6('o');
-              setONums([...oNums, '6']);
-              setMoves(moves.filter(item => item !== '6'));
-              return;
-            case '45':
-              if (!moves.includes('6')) {
-                break;
-              }
-              setBox6('o');
-              setONums([...oNums, '6']);
-              setMoves(moves.filter(item => item !== '6'));
-              return;
-            case '46':
-              if (!moves.includes('5')) {
-                break;
-              }
-              setBox5('o');
-              setONums([...oNums, '5']);
-              setMoves(moves.filter(item => item !== '5'));
-              return;
-            case '47':
-              if (!moves.includes('1')) {
-                break;
-              }
-              setBox1('o');
-              setONums([...oNums, '1']);
-              setMoves(moves.filter(item => item !== '1'));
-              return;
-            case '56':
-              if (!moves.includes('4')) {
-                break;
-              }
-              setBox4('o');
-              setONums([...oNums, '4']);
-              setMoves(moves.filter(item => item !== '4'));
-              return;
-            case '57':
-              if (!moves.includes('3')) {
-                break;
-              }
-              setBox3('o');
-              setONums([...oNums, '3']);
-              setMoves(moves.filter(item => item !== '3'));
-              return;
-            case '58':
-              if (!moves.includes('2')) {
-                break;
-              }
-              setBox2('o');
-              setONums([...oNums, '2']);
-              setMoves(moves.filter(item => item !== '2'));
-              return;
-            case '59':
-              if (!moves.includes('1')) {
-                break;
-              }
-              setBox1('o');
-              setONums([...oNums, '1']);
-              setMoves(moves.filter(item => item !== '1'));
-              return;
-            case '69':
-              if (!moves.includes('3')) {
-                break;
-              }
-              setBox3('o');
-              setONums([...oNums, '3']);
-              setMoves(moves.filter(item => item !== '3'));
-              return;
-            case '78':
-              if (!moves.includes('9')) {
-                break;
-              }
-              setBox9('o');
-              setONums([...oNums, '9']);
-              setMoves(moves.filter(item => item !== '9'));
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '79':
               if (!moves.includes('8')) {
@@ -553,14 +417,11 @@ const Board = (props) => {
               setBox8('o');
               setONums([...oNums, '8']);
               setMoves(moves.filter(item => item !== '8'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
               setX(true);
               flip = true;
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
               return;
             case '89':
               if (!moves.includes('7')) {
@@ -569,7 +430,6 @@ const Board = (props) => {
               setBox7('o');
               setONums([...oNums, '7']);
               setMoves(moves.filter(item => item !== '7'));
-<<<<<<< HEAD
               setXPotential(true);
               setJoeMove(true);
               setTie(tie + 1);
@@ -577,19 +437,11 @@ const Board = (props) => {
               flip = true;
               return;
           }
-=======
-              return;
-          }
-          setJoeMove(true);
-          setTie(tie + 1);
-          setX(true);
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
         }, 2500);
         return () => clearTimeout(timer);
       } else if (currentCombo.length > 2) {
         return;
       }
-<<<<<<< HEAD
 
       // if (!joeMove) {
       //   joeBot.forEach(item => {
@@ -597,15 +449,6 @@ const Board = (props) => {
       //   });
       // }
 
-=======
-
-      // if (!joeMove) {
-      //   joeBot.forEach(item => {
-      //     potential(currentCombo + item);
-      //   });
-      // }
-
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
       currPlayer.forEach(item => {
         potential(currentCombo + item);
       });
@@ -613,7 +456,6 @@ const Board = (props) => {
       return;
     };
     potential();
-<<<<<<< HEAD
     console.log('flip : ', flip)
 
     if (!flip) {
@@ -635,18 +477,6 @@ const Board = (props) => {
     setX(true);
 
     const timer = setTimeout(() => {
-=======
-
-    return;
-  }
-
-  const randomSpot = () => {
-    console.log('random')
-
-    const timer = setTimeout(() => {
-      let random = Math.floor(Math.random() * (moves.length - 1) + 1);
-
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
       switch (moves[random]) {
         case '1':
           setBox1('o');
@@ -676,13 +506,6 @@ const Board = (props) => {
           setBox9('o');
           break;
       }
-<<<<<<< HEAD
-=======
-      setMoves(moves.filter(item => item !== moves[random]));
-      setONums([...oNums, moves[random]]);
-      setJoeMove(true);
-      setX(true);
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
     }, 2500);
     return () => clearTimeout(timer);
   }
@@ -692,10 +515,7 @@ const Board = (props) => {
       setBox5('o');
       setMoves(moves.filter(item => item !== '5'));
       setONums([...oNums, '5']);
-<<<<<<< HEAD
       setXPotential(true);
-=======
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
       setJoeMove(true);
       setX(true);
     }, 2500);
@@ -727,11 +547,6 @@ const Board = (props) => {
       id === '8' && setBox8("x");
       id === '9' && setBox9("x");
     }
-<<<<<<< HEAD
-=======
-    setJoeMove(false);
-    setX(false);
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
   }
 
   const handleJoeMove = () => {
@@ -741,7 +556,6 @@ const Board = (props) => {
   useEffect(() => {
     checkAllWinningCombos(oNums);
     checkAllWinningCombos(xNums);
-<<<<<<< HEAD
 
     if (!joeMove && xPotential && !x) {
       checkPotentialWinningCombos(xNums);
@@ -752,21 +566,6 @@ const Board = (props) => {
 
   useEffect(() => {
     if (!joeMove && !xPotential && !x) {
-=======
-  }, [x])
-
-  useEffect(() => {
-    if (!joeMove && !x) {
-      checkPotentialWinningCombos(xNums);
-      forceUpdate();
-    }
-  }, [x])
-
-  console.log('joeMove : ', joeMove, ' x : ', x)
-
-  useEffect(() => {
-    if (!joeMove && !x) {
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
       if (moves.includes('5')) {
         chooseMiddle();
       } else {
@@ -774,11 +573,7 @@ const Board = (props) => {
       }
     }
     console.log('----------------------------------------')
-<<<<<<< HEAD
   }, [toggle])
-=======
-  }, [joeMove])
->>>>>>> 449ebdf12ee50cba1223cbf0b051429622cb7be4
 
   useEffect(() => {
     props.sendWinner(winner);
