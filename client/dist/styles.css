@@ -278,7 +278,7 @@ h3 {
     width: 300px;
     display: flex;
     justify-content: space-around;
-    margin: 5px auto;
+    margin: 10px auto;
   }
 
   .difficulty {
@@ -504,7 +504,7 @@ h3 {
     width: 300px;
     display: flex;
     justify-content: space-around;
-    margin: 20px auto;
+    margin: 5px auto;
   }
 
   .difficulty {
@@ -576,9 +576,9 @@ h3 {
   }
 
   .board_wrapper {
-    height: 300px;
-    width: 300px;
-    margin: 30px auto;
+    height: 280px;
+    width: 280px;
+    margin: 20px auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -654,7 +654,7 @@ h3 {
   .mid_background {
     background-color: #3d5a80;
     color: #e0fbfc;
-    padding: 10px 0 20px 0;
+    padding: 5px 0 15px 0;
     border-radius: 0px;
   }
 
