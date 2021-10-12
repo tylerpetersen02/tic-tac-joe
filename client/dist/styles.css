@@ -38,7 +38,7 @@ h3 {
   width: 300px;
   display: flex;
   justify-content: space-around;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 .difficulty {
@@ -50,8 +50,8 @@ h3 {
 
 .button {
   height: 50px;
-  width: 120px;
   border: none;
+  padding: 0 10px;
   background-color: #e0fbfc;
   border: 2px solid rgb(194, 194, 194);
   border-radius: 10px;
@@ -278,7 +278,7 @@ h3 {
     width: 300px;
     display: flex;
     justify-content: space-around;
-    margin: 20px auto;
+    margin: 5px auto;
   }
 
   .difficulty {
@@ -290,8 +290,8 @@ h3 {
 
   .button {
     height: 50px;
-    width: 120px;
     border: none;
+    padding: 0 10px;
     background-color: #e0fbfc;
     border: 2px solid rgb(194, 194, 194);
     border-radius: 10px;
@@ -516,8 +516,8 @@ h3 {
 
   .button {
     height: 50px;
-    width: 120px;
     border: none;
+    padding: 0 10px;
     background-color: #e0fbfc;
     border: 2px solid rgb(194, 194, 194);
     border-radius: 10px;
