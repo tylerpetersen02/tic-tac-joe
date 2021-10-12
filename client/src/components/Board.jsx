@@ -29,7 +29,7 @@ const Board = (props) => {
   const [first, setFirst] = useState(true);
   const [joeLine, setJoeLine] = useState('');
   const reset = props.gameReset;
-  console.log(tie);
+  let gameOver = false;
 
   if (props.gameReset) {
     const gameReset = () => {
@@ -53,6 +53,7 @@ const Board = (props) => {
       setToggle(true);
       setTie(0);
       setFirst(true);
+      gameOver = false;
       props.gameResetFinal();
     }
   }
@@ -62,7 +63,6 @@ const Board = (props) => {
   }
 
   const checkAllWinningCombos = currPlayer => {
-    let checkWinner = 3;
 
     const winningCombos = [
       '123', '456', '789', '147',
@@ -71,7 +71,7 @@ const Board = (props) => {
 
     const roundsPlayed = function (currentCombo) {
       currentCombo = currentCombo || '';
-      if (currentCombo.length === checkWinner) {
+      if (currentCombo.length === 3) {
         if (
           currentCombo[1] === currentCombo[2] ||
           currentCombo[0] === currentCombo[1]
@@ -84,9 +84,11 @@ const Board = (props) => {
           if (x) {
             setJoeLine("Robots are superior!");
             setWinner("JoeBot wins!");
+            gameOver = true;
           } else {
             setJoeLine("Error! Error! *beep boop*");
             setWinner("You win!");
+            gameOver = true;
           }
         } else if (tie === 9 && !winningCombos.includes(currentCombo)) {
           setJoeLine("A Tie? Cannot compute!");
@@ -95,6 +97,7 @@ const Board = (props) => {
         return;
       }
       if (winner) {
+        console.log(winner);
         return;
       }
       currPlayer.forEach(item => {
@@ -107,6 +110,7 @@ const Board = (props) => {
 
 
   const checkPotentialWinningCombos = (currPlayerO, currPlayerX) => {
+    console.log('-------------------');
     let combo = '';
     const potentialWinningCombos = [
       '12', '13', '14', '15', '17', '19',
@@ -115,26 +119,39 @@ const Board = (props) => {
       '58', '59', '69', '78', '79', '89'
     ]
 
-    const potential = function (moves) {
+    const potential = function (bothMoves, whichPlayer) {
 
-      const findCombos = (moves) => {
-        console.log('moves', moves);
-        for (var i = 0; i < moves.length; i++) {
+      const findCombos = (bothMoves, whichPlayer) => {
+        console.log('bothMoves', bothMoves, 'player', whichPlayer);
+        bothMoves = bothMoves.sort();
+        console.log('bothMoves', bothMoves, 'player', whichPlayer);
+        for (var i = 0; i < bothMoves.length; i++) {
 
-          for (var j = i + 1; j < moves.length; j++) {
+          for (var j = i + 1; j < bothMoves.length; j++) {
 
-            let curr = moves[i].concat(moves[j]);
+            let curr = bothMoves[i].concat(bothMoves[j]);
+
+            console.log('current :', curr)
             if (potentialWinningCombos.includes(curr)) {
-              if (!previousXCombos.includes(curr) || !previousOCombos.includes(curr)) {
-                combo = curr;
-                break;
+              if (whichPlayer === 'o') {
+                if (!previousOCombos.includes(curr)) {
+                  combo = curr;
+                  setPreviousOCombos([...previousOCombos, combo]);
+                  break;
+                }
+              } else if (whichPlayer === 'x') {
+                if (!previousXCombos.includes(curr)) {
+                  combo = curr;
+                  setPreviousOCombos([...previousXCombos, combo]);
+                  break;
+                }
               }
             }
           }
         }
       }
-      findCombos(moves);
-
+      findCombos(bothMoves, whichPlayer);
+      console.log(combo);
       if (potentialWinningCombos.includes(combo) || combo.length === 2) {
 
         console.log(combo)
@@ -145,168 +162,168 @@ const Board = (props) => {
                 setBox3('o');
                 setONums([...oNums, '3']);
                 setMoves(moves.filter(item => item !== '3'));
-                return;
+                break;
               }
             case '13':
               if (moves.includes('2')) {
                 setBox2('o');
                 setONums([...oNums, '2']);
                 setMoves(moves.filter(item => item !== '2'));
-                return;
+                break;
               }
             case '14':
               if (moves.includes('7')) {
                 setBox7('o');
                 setONums([...oNums, '7']);
                 setMoves(moves.filter(item => item !== '7'));
-                return;
+                break;
               }
             case '15':
               if (moves.includes('9')) {
                 setBox9('o');
                 setONums([...oNums, '9']);
                 setMoves(moves.filter(item => item !== '9'));
-                return;
+                break;
               }
             case '17':
               if (moves.includes('4')) {
                 setBox4('o');
                 setONums([...oNums, '4']);
                 setMoves(moves.filter(item => item !== '4'));
-                return;
+                break;
               }
             case '19':
               if (moves.includes('5')) {
                 setBox5('o');
                 setONums([...oNums, '5']);
                 setMoves(moves.filter(item => item !== '5'));
-                return;
+                break;
               }
             case '23':
               if (moves.includes('1')) {
                 setBox1('o');
                 setONums([...oNums, '1']);
                 setMoves(moves.filter(item => item !== '1'));
-                return;
+                break;
               }
             case '25':
               if (moves.includes('8')) {
                 setBox8('o');
                 setONums([...oNums, '8']);
                 setMoves(moves.filter(item => item !== '8'));
-                return;
+                break;
               }
             case '28':
               if (moves.includes('5')) {
                 setBox5('o');
                 setONums([...oNums, '5']);
                 setMoves(moves.filter(item => item !== '5'));
-                return;
+                break;
               }
             case '35':
               if (moves.includes('7')) {
                 setBox7('o');
                 setONums([...oNums, '7']);
                 setMoves(moves.filter(item => item !== '7'));
-                return;
+                break;
               }
             case '36':
               if (moves.includes('9')) {
                 setBox9('o');
                 setONums([...oNums, '9']);
                 setMoves(moves.filter(item => item !== '9'));
-                return;
+                break;
               }
             case '37':
               if (moves.includes('5')) {
                 setBox5('o');
                 setONums([...oNums, '5']);
                 setMoves(moves.filter(item => item !== '5'));
-                return;
+                break;
               }
             case '39':
               if (moves.includes('6')) {
                 setBox6('o');
                 setONums([...oNums, '6']);
                 setMoves(moves.filter(item => item !== '6'));
-                return;
+                break;
               }
             case '45':
               if (moves.includes('6')) {
                 setBox6('o');
                 setONums([...oNums, '6']);
                 setMoves(moves.filter(item => item !== '6'));
-                return;
+                break;
               }
             case '46':
               if (moves.includes('5')) {
                 setBox5('o');
                 setONums([...oNums, '5']);
                 setMoves(moves.filter(item => item !== '5'));
-                return;
+                break;
               }
             case '47':
               if (moves.includes('1')) {
                 setBox1('o');
                 setONums([...oNums, '1']);
                 setMoves(moves.filter(item => item !== '1'));
-                return;
+                break;
               }
             case '56':
               if (moves.includes('4')) {
                 setBox4('o');
                 setONums([...oNums, '4']);
                 setMoves(moves.filter(item => item !== '4'));
-                return;
+                break;
               }
             case '57':
               if (moves.includes('3')) {
                 setBox3('o');
                 setONums([...oNums, '3']);
                 setMoves(moves.filter(item => item !== '3'));
-                return;
+                break;
               }
             case '58':
               if (moves.includes('2')) {
                 setBox2('o');
                 setONums([...oNums, '2']);
                 setMoves(moves.filter(item => item !== '2'));
-                return;
+                break;
               }
             case '59':
               if (moves.includes('1')) {
                 setBox1('o');
                 setONums([...oNums, '1']);
                 setMoves(moves.filter(item => item !== '1'));
-                return;
+                break;
               }
             case '69':
               if (moves.includes('3')) {
                 setBox3('o');
                 setONums([...oNums, '3']);
                 setMoves(moves.filter(item => item !== '3'));
-                return;
+                break;
               }
             case '78':
               if (moves.includes('9')) {
                 setBox9('o');
                 setONums([...oNums, '9']);
                 setMoves(moves.filter(item => item !== '9'));
-                return;
+                break;
               }
             case '79':
               if (moves.includes('8')) {
                 setBox8('o');
                 setONums([...oNums, '8']);
                 setMoves(moves.filter(item => item !== '8'));
-                return;
+                break;
               }
             case '89':
               if (moves.includes('7')) {
                 setBox7('o');
                 setONums([...oNums, '7']);
                 setMoves(moves.filter(item => item !== '7'));
-                return;
+                break;
               }
           }
         }, 2500);
@@ -315,14 +332,10 @@ const Board = (props) => {
 
       return;
     };
-    potential(currPlayerO);
+    potential(currPlayerO, 'o');
 
     if (!combo) {
-      potential(currPlayerX);
-    }
-
-    if (combo) {
-      setPreviousOCombos([...previousOCombos, combo]);
+      potential(currPlayerX, 'x');
     }
 
     if (!combo) {
@@ -338,12 +351,12 @@ const Board = (props) => {
     setX(true);
 
     setToggle(!toggle);
+
     return;
   }
 
   const randomSpot = () => {
     console.log('random')
-
     const random = Math.floor(Math.random() * (moves.length - 1) + 1);
     setMoves(moves.filter(item => item !== moves[random]));
     setONums([...oNums, moves[random]]);
@@ -420,24 +433,19 @@ const Board = (props) => {
     }
   }
 
-  const handleJoeMove = () => {
-
-  }
+  useEffect(() => {
+    props.sendWinner(winner);
+  }, [winner])
 
   useEffect(() => {
     checkAllWinningCombos(oNums);
     checkAllWinningCombos(xNums);
 
-    if (!joeMove && !x) {
+    if (!joeMove && !x && !gameOver) {
       checkPotentialWinningCombos(oNums, xNums);
     }
   }, [x, toggle, xNums, oNums])
 
-  console.log('joeMove : ', joeMove, ' x : ', x)
-
-  useEffect(() => {
-    props.sendWinner(winner);
-  }, [winner])
 
   return (
     <div>
