@@ -21,8 +21,7 @@ const Board = (props) => {
   const [xNums, setXNums] = useState([]);
   const [moves, setMoves] = useState(openMoves);
   const [joeMove, setJoeMove] = useState(true);
-  const [previousOCombos, setPreviousOCombos] = useState([]);
-  const [previousXCombos, setPreviousXCombos] = useState([]);
+  const [previousCombos, setPreviousCombos] = useState([]);
   const [toggle, setToggle] = useState(true);
   const [winner, setWinner] = useState(false);
   const [tie, setTie] = useState(0);
@@ -30,6 +29,7 @@ const Board = (props) => {
   const [joeLine, setJoeLine] = useState('');
   const reset = props.gameReset;
   let gameOver = false;
+  console.log(previousCombos)
 
   if (props.gameReset) {
     const gameReset = () => {
@@ -48,8 +48,7 @@ const Board = (props) => {
       setWinner(false);
       setMoves(openMoves);
       setJoeMove(true);
-      setPreviousOCombos([]);
-      setPreviousXCombos([]);
+      setPreviousCombos([]);
       setToggle(true);
       setTie(0);
       setFirst(true);
@@ -119,12 +118,10 @@ const Board = (props) => {
       '58', '59', '69', '78', '79', '89'
     ]
 
-    const potential = function (bothMoves, whichPlayer) {
-
-      const findCombos = (bothMoves, whichPlayer) => {
-        console.log('bothMoves', bothMoves, 'player', whichPlayer);
+    const potential = function (bothMoves) {
+      console.log('previous combos: ', previousCombos);
+      const findCombos = (bothMoves) => {
         bothMoves = bothMoves.sort();
-        console.log('bothMoves', bothMoves, 'player', whichPlayer);
         for (var i = 0; i < bothMoves.length; i++) {
 
           for (var j = i + 1; j < bothMoves.length; j++) {
@@ -132,30 +129,24 @@ const Board = (props) => {
             let curr = bothMoves[i].concat(bothMoves[j]);
 
             console.log('current :', curr)
-            if (potentialWinningCombos.includes(curr)) {
-              if (whichPlayer === 'o') {
-                if (!previousOCombos.includes(curr)) {
-                  combo = curr;
-                  setPreviousOCombos([...previousOCombos, combo]);
-                  break;
-                }
-              } else if (whichPlayer === 'x') {
-                if (!previousXCombos.includes(curr)) {
-                  combo = curr;
-                  setPreviousOCombos([...previousXCombos, combo]);
-                  break;
-                }
-              }
+            if (
+              potentialWinningCombos.includes(curr) &&
+              !previousCombos.includes(curr)
+            ) {
+              combo = curr;
+              setPreviousCombos([...previousCombos, combo]);
+              break;
             }
           }
         }
       }
-      findCombos(bothMoves, whichPlayer);
+      findCombos(bothMoves);
       console.log(combo);
-      if (potentialWinningCombos.includes(combo) || combo.length === 2) {
+      if (potentialWinningCombos.includes(combo)) {
 
         console.log(combo)
         const timer = setTimeout(() => {
+          console.log('using this combo: ', combo);
           switch (combo) {
             case '12':
               if (moves.includes('3')) {
@@ -332,10 +323,10 @@ const Board = (props) => {
 
       return;
     };
-    potential(currPlayerO, 'o');
+    potential(currPlayerO);
 
     if (!combo) {
-      potential(currPlayerX, 'x');
+      potential(currPlayerX);
     }
 
     if (!combo) {
