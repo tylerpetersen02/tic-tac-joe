@@ -373,10 +373,21 @@ const Board = (props) => {
       ) {
         chooseCorner();
       } else if (
+        !moves.includes('5') &&
+        oNums.length === 1 &&
+        (
+          (xNums.includes('2') && xNums.includes('4')) ||
+          (xNums.includes('2') && xNums.includes('6')) ||
+          (xNums.includes('4') && xNums.includes('8')) ||
+          (xNums.includes('6') && xNums.includes('8'))
+        )
+      ) {
+        playBlockingCorner();
+      } else if (
         moves.includes('5') &&
         oNums.length === 1
       ) {
-        playTouchingTile();
+        playAdjacentCorner();
       } else {
         randomSpot();
       }
@@ -399,6 +410,38 @@ const Board = (props) => {
       setBox5('o');
       setMoves(moves.filter(item => item !== '5'));
       setONums([...oNums, '5']);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }
+
+
+  // Plays corner to block a trap
+  const playBlockingCorner = () => {
+    console.log('blocking')
+    let combo = xNums.join('');
+
+    const timer = setTimeout(() => {
+      switch (combo) {
+        case '24':
+          setBox1('o');
+          setONums([...oNums, '1']);
+          setMoves(moves.filter(item => item !== '1'));
+          break;
+        case '26':
+          setBox3('o');
+          setONums([...oNums, '3']);
+          setMoves(moves.filter(item => item !== '3'));
+          break;
+        case '48':
+          setBox7('o');
+          setONums([...oNums, '7']);
+          setMoves(moves.filter(item => item !== '7'));
+          break;
+        case '68':
+          setBox9('o');
+          setONums([...oNums, '9']);
+          setMoves(moves.filter(item => item !== '9'));
+      }
     }, 2500);
     return () => clearTimeout(timer);
   }
@@ -432,8 +475,8 @@ const Board = (props) => {
   }
 
 
-  // Play a tile touching previous move on second turn
-  const playTouchingTile = () => {
+  // Play a tile in an adjacent corner to move on second turn
+  const playAdjacentCorner = () => {
     console.log('touching');
     console.log(moves);
     const random = Math.floor(Math.random() * 2);
@@ -450,10 +493,12 @@ const Board = (props) => {
             setBox1('o');
             setONums([...oNums, '1']);
             setMoves(moves.filter(item => item !== '1'));
+            break;
           case '7':
             setBox1('o');
             setONums([...oNums, '1']);
             setMoves(moves.filter(item => item !== '1'));
+            break;
           case '9':
             setBox3('o');
             setONums([...oNums, '3']);
@@ -470,10 +515,12 @@ const Board = (props) => {
             setBox9('o');
             setONums([...oNums, '9']);
             setMoves(moves.filter(item => item !== '9'));
+            break;
           case '7':
             setBox9('o');
             setONums([...oNums, '9']);
             setMoves(moves.filter(item => item !== '9'));
+            break;
           case '9':
             setBox7('o');
             setONums([...oNums, '7']);
@@ -561,7 +608,7 @@ const Board = (props) => {
   }
 
 
-
+  // Player places their tile
   const placeTile = (e) => {
     let id = e.currentTarget.id;
 
@@ -569,14 +616,14 @@ const Board = (props) => {
       return;
     }
 
-    setFirst(false);
-    setJoeMove(false);
-    setX(false);
-    setMoves(moves.filter(item => item !== id));
-    setTie(tie + 1);
+    if (x && xNums.length === oNums.length) {
 
-    if (x) {
+      setMoves(moves.filter(item => item !== id));
       setXNums([...xNums, id]);
+      setJoeMove(false);
+      setTie(tie + 1);
+      setFirst(false);
+      setX(false);
       id === '1' && setBox1("x");
       id === '2' && setBox2("x");
       id === '3' && setBox3("x");
