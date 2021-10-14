@@ -8,6 +8,7 @@ const Board = (props) => {
 
   const openMoves = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
   const [x, setX] = useState(true);
+  const [playerStart, setPlayerStart] = useState(true);
   const [box1, setBox1] = useState(true);
   const [box2, setBox2] = useState(true);
   const [box3, setBox3] = useState(true);
@@ -29,33 +30,6 @@ const Board = (props) => {
   const [joeLine, setJoeLine] = useState('');
   const reset = props.gameReset;
   let gameOver = false;
-  console.log(previousCombos)
-
-  if (props.gameReset) {
-    const gameReset = () => {
-      setX(true);
-      setBox1(true);
-      setBox2(true);
-      setBox3(true);
-      setBox4(true);
-      setBox5(true);
-      setBox6(true);
-      setBox7(true);
-      setBox8(true);
-      setBox9(true);
-      setONums([]);
-      setXNums([]);
-      setWinner(false);
-      setMoves(openMoves);
-      setJoeMove(true);
-      setPreviousCombos([]);
-      setToggle(true);
-      setTie(0);
-      setFirst(true);
-      gameOver = false;
-      props.gameResetFinal();
-    }
-  }
 
   const handleJoeLine = (line) => {
     setJoeLine(line);
@@ -96,7 +70,6 @@ const Board = (props) => {
         return;
       }
       if (winner) {
-        console.log(winner);
         return;
       }
       currPlayer.forEach(item => {
@@ -109,7 +82,7 @@ const Board = (props) => {
 
 
   const checkPotentialWinningCombos = (currPlayerO, currPlayerX) => {
-    console.log('-------------------');
+
     let combo = '';
     const potentialWinningCombos = [
       '12', '13', '14', '15', '17', '19',
@@ -132,8 +105,7 @@ const Board = (props) => {
           for (var j = i + 1; j < bothMoves.length; j++) {
 
             let curr = bothMoves[i].concat(bothMoves[j]);
-
-            console.log('current :', curr)
+            console.log(curr)
             if (
               potentialWinningCombos.includes(curr)
             ) {
@@ -141,11 +113,9 @@ const Board = (props) => {
               setPreviousCombos([...previousCombos, combo]);
 
               if (moves.includes(findThirdSpot(combo))) {
-                console.log('moves combo', combo);
-
-
+                console.log('combo', combo)
                 const timer = setTimeout(() => {
-                  console.log('using this combo: ', combo);
+
                   switch (combo) {
                     case '12':
                       if (moves.includes('3')) {
@@ -384,7 +354,8 @@ const Board = (props) => {
       ) {
         playBlockingCorner();
       } else if (
-        moves.includes('5') &&
+        !moves.includes('5') &&
+        oNums[0] !== '5' &&
         oNums.length === 1
       ) {
         playAdjacentCorner();
@@ -405,7 +376,7 @@ const Board = (props) => {
 
   // Chooses middle if not taken
   const chooseMiddle = () => {
-    console.log('middle');
+
     const timer = setTimeout(() => {
       setBox5('o');
       setMoves(moves.filter(item => item !== '5'));
@@ -449,7 +420,7 @@ const Board = (props) => {
 
   // Chooses a corner first move if middle taken
   const chooseCorner = () => {
-    console.log('corner');
+    console.log('corner')
     const corners = ['1', '3', '7', '9']
     const random = Math.floor(Math.random() * (corners.length - 1) + 1);
     setMoves(moves.filter(item => item !== corners[random]));
@@ -477,8 +448,7 @@ const Board = (props) => {
 
   // Play a tile in an adjacent corner to move on second turn
   const playAdjacentCorner = () => {
-    console.log('touching');
-    console.log(moves);
+    console.log('adjacent')
     const random = Math.floor(Math.random() * 2);
 
     const timer = setTimeout(() => {
@@ -534,7 +504,7 @@ const Board = (props) => {
 
   // Finds the blocking/winning move if there is one
   const findThirdSpot = (str) => {
-
+    console.log(str);
     let final;
     let split = str.split('').sort();
     let first = Number(split[0]);
@@ -556,12 +526,20 @@ const Board = (props) => {
         final = (second * 2) - first;
       }
     } else if (second - first === 3) {
-      final = (second * 2) - first;
+      if (
+        first === 4 ||
+        first === 6
+      ) {
+        final = (first * 2) - second;
+      } else {
+        final = (second * 2) - first;
+      }
     } else {
       final = (first + second) / 2;
     }
 
     final = final.toString();
+    console.log(final);
     return final;
   }
 
@@ -643,7 +621,7 @@ const Board = (props) => {
   useEffect(() => {
     checkAllWinningCombos(oNums);
     checkAllWinningCombos(xNums);
-
+    console.log(joeMove, x, gameOver)
     if (!joeMove && !x && !gameOver) {
       checkPotentialWinningCombos(oNums, xNums);
     }
