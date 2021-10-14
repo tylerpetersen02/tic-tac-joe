@@ -119,207 +119,238 @@ const Board = (props) => {
     ]
 
     const potential = function (bothMoves) {
-      console.log('previous combos: ', previousCombos);
+
       const findCombos = (bothMoves) => {
         bothMoves = bothMoves.sort();
+        let joePlaceTile = false;
         for (var i = 0; i < bothMoves.length; i++) {
 
+          if (joePlaceTile) {
+            return;
+          }
+          // save point
           for (var j = i + 1; j < bothMoves.length; j++) {
 
             let curr = bothMoves[i].concat(bothMoves[j]);
 
             console.log('current :', curr)
             if (
-              potentialWinningCombos.includes(curr) &&
-              !previousCombos.includes(curr)
+              potentialWinningCombos.includes(curr)
             ) {
               combo = curr;
               setPreviousCombos([...previousCombos, combo]);
-              break;
+
+              if (moves.includes(findThirdSpot(combo))) {
+                console.log('moves combo', combo);
+
+
+                const timer = setTimeout(() => {
+                  console.log('using this combo: ', combo);
+                  switch (combo) {
+                    case '12':
+                      if (moves.includes('3')) {
+                        setBox3('o');
+                        setONums([...oNums, '3']);
+                        setMoves(moves.filter(item => item !== '3'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '13':
+                      if (moves.includes('2')) {
+                        setBox2('o');
+                        setONums([...oNums, '2']);
+                        setMoves(moves.filter(item => item !== '2'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '14':
+                      if (moves.includes('7')) {
+                        setBox7('o');
+                        setONums([...oNums, '7']);
+                        setMoves(moves.filter(item => item !== '7'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '15':
+                      if (moves.includes('9')) {
+                        setBox9('o');
+                        setONums([...oNums, '9']);
+                        setMoves(moves.filter(item => item !== '9'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '17':
+                      if (moves.includes('4')) {
+                        setBox4('o');
+                        setONums([...oNums, '4']);
+                        setMoves(moves.filter(item => item !== '4'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '19':
+                      if (moves.includes('5')) {
+                        setBox5('o');
+                        setONums([...oNums, '5']);
+                        setMoves(moves.filter(item => item !== '5'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '23':
+                      if (moves.includes('1')) {
+                        setBox1('o');
+                        setONums([...oNums, '1']);
+                        setMoves(moves.filter(item => item !== '1'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '25':
+                      if (moves.includes('8')) {
+                        setBox8('o');
+                        setONums([...oNums, '8']);
+                        setMoves(moves.filter(item => item !== '8'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '28':
+                      if (moves.includes('5')) {
+                        setBox5('o');
+                        setONums([...oNums, '5']);
+                        setMoves(moves.filter(item => item !== '5'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '35':
+                      if (moves.includes('7')) {
+                        setBox7('o');
+                        setONums([...oNums, '7']);
+                        setMoves(moves.filter(item => item !== '7'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '36':
+                      if (moves.includes('9')) {
+                        setBox9('o');
+                        setONums([...oNums, '9']);
+                        setMoves(moves.filter(item => item !== '9'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '37':
+                      if (moves.includes('5')) {
+                        setBox5('o');
+                        setONums([...oNums, '5']);
+                        setMoves(moves.filter(item => item !== '5'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '39':
+                      if (moves.includes('6')) {
+                        setBox6('o');
+                        setONums([...oNums, '6']);
+                        setMoves(moves.filter(item => item !== '6'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '45':
+                      if (moves.includes('6')) {
+                        setBox6('o');
+                        setONums([...oNums, '6']);
+                        setMoves(moves.filter(item => item !== '6'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '46':
+                      if (moves.includes('5')) {
+                        setBox5('o');
+                        setONums([...oNums, '5']);
+                        setMoves(moves.filter(item => item !== '5'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '47':
+                      if (moves.includes('1')) {
+                        setBox1('o');
+                        setONums([...oNums, '1']);
+                        setMoves(moves.filter(item => item !== '1'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '56':
+                      if (moves.includes('4')) {
+                        setBox4('o');
+                        setONums([...oNums, '4']);
+                        setMoves(moves.filter(item => item !== '4'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '57':
+                      if (moves.includes('3')) {
+                        setBox3('o');
+                        setONums([...oNums, '3']);
+                        setMoves(moves.filter(item => item !== '3'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '58':
+                      if (moves.includes('2')) {
+                        setBox2('o');
+                        setONums([...oNums, '2']);
+                        setMoves(moves.filter(item => item !== '2'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '59':
+                      if (moves.includes('1')) {
+                        setBox1('o');
+                        setONums([...oNums, '1']);
+                        setMoves(moves.filter(item => item !== '1'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '69':
+                      if (moves.includes('3')) {
+                        setBox3('o');
+                        setONums([...oNums, '3']);
+                        setMoves(moves.filter(item => item !== '3'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '78':
+                      if (moves.includes('9')) {
+                        setBox9('o');
+                        setONums([...oNums, '9']);
+                        setMoves(moves.filter(item => item !== '9'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '79':
+                      if (moves.includes('8')) {
+                        setBox8('o');
+                        setONums([...oNums, '8']);
+                        setMoves(moves.filter(item => item !== '8'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                    case '89':
+                      if (moves.includes('7')) {
+                        setBox7('o');
+                        setONums([...oNums, '7']);
+                        setMoves(moves.filter(item => item !== '7'));
+                        joePlaceTile = true;
+                        break;
+                      }
+                  }
+                }, 2500);
+                return () => clearTimeout(timer);
+              } else {
+                combo = '';
+                continue;
+              }
             }
           }
         }
       }
       findCombos(bothMoves);
-      console.log(combo);
-      if (potentialWinningCombos.includes(combo)) {
-
-        console.log(combo)
-        const timer = setTimeout(() => {
-          console.log('using this combo: ', combo);
-          switch (combo) {
-            case '12':
-              if (moves.includes('3')) {
-                setBox3('o');
-                setONums([...oNums, '3']);
-                setMoves(moves.filter(item => item !== '3'));
-                break;
-              }
-            case '13':
-              if (moves.includes('2')) {
-                setBox2('o');
-                setONums([...oNums, '2']);
-                setMoves(moves.filter(item => item !== '2'));
-                break;
-              }
-            case '14':
-              if (moves.includes('7')) {
-                setBox7('o');
-                setONums([...oNums, '7']);
-                setMoves(moves.filter(item => item !== '7'));
-                break;
-              }
-            case '15':
-              if (moves.includes('9')) {
-                setBox9('o');
-                setONums([...oNums, '9']);
-                setMoves(moves.filter(item => item !== '9'));
-                break;
-              }
-            case '17':
-              if (moves.includes('4')) {
-                setBox4('o');
-                setONums([...oNums, '4']);
-                setMoves(moves.filter(item => item !== '4'));
-                break;
-              }
-            case '19':
-              if (moves.includes('5')) {
-                setBox5('o');
-                setONums([...oNums, '5']);
-                setMoves(moves.filter(item => item !== '5'));
-                break;
-              }
-            case '23':
-              if (moves.includes('1')) {
-                setBox1('o');
-                setONums([...oNums, '1']);
-                setMoves(moves.filter(item => item !== '1'));
-                break;
-              }
-            case '25':
-              if (moves.includes('8')) {
-                setBox8('o');
-                setONums([...oNums, '8']);
-                setMoves(moves.filter(item => item !== '8'));
-                break;
-              }
-            case '28':
-              if (moves.includes('5')) {
-                setBox5('o');
-                setONums([...oNums, '5']);
-                setMoves(moves.filter(item => item !== '5'));
-                break;
-              }
-            case '35':
-              if (moves.includes('7')) {
-                setBox7('o');
-                setONums([...oNums, '7']);
-                setMoves(moves.filter(item => item !== '7'));
-                break;
-              }
-            case '36':
-              if (moves.includes('9')) {
-                setBox9('o');
-                setONums([...oNums, '9']);
-                setMoves(moves.filter(item => item !== '9'));
-                break;
-              }
-            case '37':
-              if (moves.includes('5')) {
-                setBox5('o');
-                setONums([...oNums, '5']);
-                setMoves(moves.filter(item => item !== '5'));
-                break;
-              }
-            case '39':
-              if (moves.includes('6')) {
-                setBox6('o');
-                setONums([...oNums, '6']);
-                setMoves(moves.filter(item => item !== '6'));
-                break;
-              }
-            case '45':
-              if (moves.includes('6')) {
-                setBox6('o');
-                setONums([...oNums, '6']);
-                setMoves(moves.filter(item => item !== '6'));
-                break;
-              }
-            case '46':
-              if (moves.includes('5')) {
-                setBox5('o');
-                setONums([...oNums, '5']);
-                setMoves(moves.filter(item => item !== '5'));
-                break;
-              }
-            case '47':
-              if (moves.includes('1')) {
-                setBox1('o');
-                setONums([...oNums, '1']);
-                setMoves(moves.filter(item => item !== '1'));
-                break;
-              }
-            case '56':
-              if (moves.includes('4')) {
-                setBox4('o');
-                setONums([...oNums, '4']);
-                setMoves(moves.filter(item => item !== '4'));
-                break;
-              }
-            case '57':
-              if (moves.includes('3')) {
-                setBox3('o');
-                setONums([...oNums, '3']);
-                setMoves(moves.filter(item => item !== '3'));
-                break;
-              }
-            case '58':
-              if (moves.includes('2')) {
-                setBox2('o');
-                setONums([...oNums, '2']);
-                setMoves(moves.filter(item => item !== '2'));
-                break;
-              }
-            case '59':
-              if (moves.includes('1')) {
-                setBox1('o');
-                setONums([...oNums, '1']);
-                setMoves(moves.filter(item => item !== '1'));
-                break;
-              }
-            case '69':
-              if (moves.includes('3')) {
-                setBox3('o');
-                setONums([...oNums, '3']);
-                setMoves(moves.filter(item => item !== '3'));
-                break;
-              }
-            case '78':
-              if (moves.includes('9')) {
-                setBox9('o');
-                setONums([...oNums, '9']);
-                setMoves(moves.filter(item => item !== '9'));
-                break;
-              }
-            case '79':
-              if (moves.includes('8')) {
-                setBox8('o');
-                setONums([...oNums, '8']);
-                setMoves(moves.filter(item => item !== '8'));
-                break;
-              }
-            case '89':
-              if (moves.includes('7')) {
-                setBox7('o');
-                setONums([...oNums, '7']);
-                setMoves(moves.filter(item => item !== '7'));
-                break;
-              }
-          }
-        }, 2500);
-        return () => clearTimeout(timer);
-      }
 
       return;
     };
@@ -329,9 +360,23 @@ const Board = (props) => {
       potential(currPlayerX);
     }
 
-    if (!combo) {
-      if (moves.includes('5')) {
+    if (
+      !combo
+    ) {
+      if (
+        moves.includes('5')
+      ) {
         chooseMiddle();
+      } else if (
+        !moves.includes('5') &&
+        oNums.length === 0
+      ) {
+        chooseCorner();
+      } else if (
+        moves.includes('5') &&
+        oNums.length === 1
+      ) {
+        playTouchingTile();
       } else {
         randomSpot();
       }
@@ -346,13 +391,140 @@ const Board = (props) => {
     return;
   }
 
+
+  // Chooses middle if not taken
+  const chooseMiddle = () => {
+    console.log('middle');
+    const timer = setTimeout(() => {
+      setBox5('o');
+      setMoves(moves.filter(item => item !== '5'));
+      setONums([...oNums, '5']);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }
+
+
+  // Chooses a corner first move if middle taken
+  const chooseCorner = () => {
+    console.log('corner');
+    const corners = ['1', '3', '7', '9']
+    const random = Math.floor(Math.random() * (corners.length - 1) + 1);
+    setMoves(moves.filter(item => item !== corners[random]));
+    setONums([...oNums, corners[random]]);
+
+    const timer = setTimeout(() => {
+      switch (corners[random]) {
+        case '1':
+          setBox1('o');
+          break;
+        case '3':
+          setBox3('o');
+          break;
+        case '7':
+          setBox7('o');
+          break;
+        case '9':
+          setBox9('o');
+          break;
+      }
+    }, 2500);
+    return () => clearTimeout(timer);
+  }
+
+
+  // Play a tile touching previous move on second turn
+  const playTouchingTile = () => {
+    console.log('touching');
+    console.log(moves);
+    const random = Math.floor(Math.random() * 2);
+
+    const timer = setTimeout(() => {
+      if (random === 0) {
+        switch (oNums[0]) {
+          case '1':
+            setBox3('o');
+            setONums([...oNums, '3']);
+            setMoves(moves.filter(item => item !== '3'));
+            break;
+          case '3':
+            setBox1('o');
+            setONums([...oNums, '1']);
+            setMoves(moves.filter(item => item !== '1'));
+          case '7':
+            setBox1('o');
+            setONums([...oNums, '1']);
+            setMoves(moves.filter(item => item !== '1'));
+          case '9':
+            setBox3('o');
+            setONums([...oNums, '3']);
+            setMoves(moves.filter(item => item !== '3'));
+        }
+      } else {
+        switch (oNums[0]) {
+          case '1':
+            setBox7('o');
+            setONums([...oNums, '7']);
+            setMoves(moves.filter(item => item !== '7'));
+            break;
+          case '3':
+            setBox9('o');
+            setONums([...oNums, '9']);
+            setMoves(moves.filter(item => item !== '9'));
+          case '7':
+            setBox9('o');
+            setONums([...oNums, '9']);
+            setMoves(moves.filter(item => item !== '9'));
+          case '9':
+            setBox7('o');
+            setONums([...oNums, '7']);
+            setMoves(moves.filter(item => item !== '7'));
+        }
+      }
+    }, 2500);
+    return () => clearTimeout(timer);
+  }
+
+
+  // Finds the blocking/winning move if there is one
+  const findThirdSpot = (str) => {
+
+    let final;
+    let split = str.split('').sort();
+    let first = Number(split[0]);
+    let second = Number(split[1]);
+
+    if (first === 5) {
+      final = 10 - second;
+    } else if (second === 5) {
+      final = 10 - first;
+    } else if (first + 1 === second) {
+      if (
+        first === 2 ||
+        first === 4 ||
+        first === 6 ||
+        first === 8
+      ) {
+        final = (first * 2) - second;
+      } else {
+        final = (second * 2) - first;
+      }
+    } else if (second - first === 3) {
+      final = (second * 2) - first;
+    } else {
+      final = (first + second) / 2;
+    }
+
+    final = final.toString();
+    return final;
+  }
+
+
+  // Joe chooses a random spot
   const randomSpot = () => {
     console.log('random')
     const random = Math.floor(Math.random() * (moves.length - 1) + 1);
     setMoves(moves.filter(item => item !== moves[random]));
     setONums([...oNums, moves[random]]);
-    setJoeMove(true);
-    setX(true);
 
     const timer = setTimeout(() => {
       switch (moves[random]) {
@@ -388,14 +560,7 @@ const Board = (props) => {
     return () => clearTimeout(timer);
   }
 
-  const chooseMiddle = () => {
-    const timer = setTimeout(() => {
-      setBox5('o');
-      setMoves(moves.filter(item => item !== '5'));
-      setONums([...oNums, '5']);
-    }, 2500);
-    return () => clearTimeout(timer);
-  }
+
 
   const placeTile = (e) => {
     let id = e.currentTarget.id;
