@@ -9,7 +9,7 @@
 
 It may seem like a simple game of Tic-Tac-Toe, but the current champion JoeBot has never lost to a human! JoeBot calculates the best move based off your moves, so choose wisely... If you are feeling bold, go ahead and challenge him for the title. Play on desktop, tablet, or mobile!
 
-Play JoeBot here: https://tic-tac-joe.vercel.app/
+Challenge JoeBot here: https://tic-tac-joe.vercel.app/
 
 ## Content
 
