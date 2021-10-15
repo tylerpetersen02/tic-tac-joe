@@ -7,7 +7,7 @@
 ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-It may seem like a simple game of Tic-Tac-Toe, but the current champion JoeBot has never lost to a human! If you are feeling bold, go ahead and challenge him for the title. Play on desktop, tablet, or mobile!
+It may seem like a simple game of Tic-Tac-Toe, but the current champion JoeBot has never lost to a human! JoeBot calculates the best move based off your moves, so choose wisely... If you are feeling bold, go ahead and challenge him for the title. Play on desktop, tablet, or mobile!
 
 Play JoeBot here: https://tic-tac-joe.vercel.app/
 
