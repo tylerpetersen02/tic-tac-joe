@@ -30,54 +30,99 @@ const Board = (props) => {
   const [joeLine, setJoeLine] = useState('');
   const reset = props.gameReset;
   let gameOver = false;
+  console.log(tie)
+
+  useEffect(() => {
+    if (props.joeStart) {
+      console.log('joe first')
+      setX(!x);
+      setJoeMove(!joeMove);
+    }
+    setBox1(true);
+    setBox2(true);
+    setBox3(true);
+    setBox4(true);
+    setBox5(true);
+    setBox6(true);
+    setBox7(true);
+    setBox8(true);
+    setBox9(true);
+    setONums([]);
+    setXNums([]);
+    setWinner(false);
+    setMoves(openMoves);
+    setPreviousCombos([]);
+    setToggle(true);
+    setTie(0);
+    setFirst(true);
+    gameOver = false;
+  }, [])
 
   const handleJoeLine = (line) => {
     setJoeLine(line);
   }
 
   const checkAllWinningCombos = currPlayer => {
+    console.log('checking tie', tie)
+    if (
+      (
+        currPlayer.includes('1') &&
+        currPlayer.includes('2') &&
+        currPlayer.includes('3')
+      ) ||
+      (
+        currPlayer.includes('4') &&
+        currPlayer.includes('5') &&
+        currPlayer.includes('6')
+      ) ||
+      (
+        currPlayer.includes('7') &&
+        currPlayer.includes('8') &&
+        currPlayer.includes('9')
+      ) ||
+      (
+        currPlayer.includes('1') &&
+        currPlayer.includes('4') &&
+        currPlayer.includes('7')
+      ) ||
+      (
+        currPlayer.includes('2') &&
+        currPlayer.includes('5') &&
+        currPlayer.includes('8')
+      ) ||
+      (
+        currPlayer.includes('3') &&
+        currPlayer.includes('6') &&
+        currPlayer.includes('9')
+      ) ||
+      (
+        currPlayer.includes('1') &&
+        currPlayer.includes('5') &&
+        currPlayer.includes('9')
+      ) ||
+      (
+        currPlayer.includes('3') &&
+        currPlayer.includes('5') &&
+        currPlayer.includes('7')
+      )
+    ) {
 
-    const winningCombos = [
-      '123', '456', '789', '147',
-      '258', '369', '159', '357'
-    ]
-
-    const roundsPlayed = function (currentCombo) {
-      currentCombo = currentCombo || '';
-      if (currentCombo.length === 3) {
-        if (
-          currentCombo[1] === currentCombo[2] ||
-          currentCombo[0] === currentCombo[1]
-        ) {
-          return;
-        }
-
-        if (winningCombos.includes(currentCombo)) {
-
-          if (x) {
-            setJoeLine("Robots are superior!");
-            setWinner("JoeBot wins!");
-            gameOver = true;
-          } else {
-            setJoeLine("Error! Error! *beep boop*");
-            setWinner("You win!");
-            gameOver = true;
-          }
-        } else if (tie === 9 && !winningCombos.includes(currentCombo)) {
-          setJoeLine("A Tie? Cannot compute!");
-          setWinner("It's a tie!")
-        }
-        return;
+      if (x) {
+        setJoeLine("Robots are superior!");
+        setWinner("JoeBot wins!");
+        gameOver = true;
+      } else {
+        setJoeLine("Error! Error! *beep boop*");
+        setWinner("You win!");
+        gameOver = true;
       }
-      if (winner) {
-        return;
-      }
-      currPlayer.forEach(item => {
-        roundsPlayed(currentCombo + item);
-      })
+    } else if (tie === 9) {
+      setJoeLine("A Tie? Cannot compute!");
+      setWinner("It's a tie!")
+      gameOver = true;
     }
-    roundsPlayed();
 
+    return;
   };
 
 
@@ -310,6 +355,8 @@ const Board = (props) => {
                         break;
                       }
                   }
+
+                  setTie(tie + 1);
                 }, 2500);
                 return () => clearTimeout(timer);
               } else {
@@ -365,7 +412,6 @@ const Board = (props) => {
     }
 
     setJoeMove(true);
-    setTie(tie + 1);
     setX(true);
 
     setToggle(!toggle);
@@ -381,6 +427,7 @@ const Board = (props) => {
       setBox5('o');
       setMoves(moves.filter(item => item !== '5'));
       setONums([...oNums, '5']);
+      setTie(tie + 1);
     }, 2500);
     return () => clearTimeout(timer);
   }
@@ -413,6 +460,8 @@ const Board = (props) => {
           setONums([...oNums, '9']);
           setMoves(moves.filter(item => item !== '9'));
       }
+
+      setTie(tie + 1);
     }, 2500);
     return () => clearTimeout(timer);
   }
@@ -441,6 +490,8 @@ const Board = (props) => {
           setBox9('o');
           break;
       }
+
+      setTie(tie + 1);
     }, 2500);
     return () => clearTimeout(timer);
   }
@@ -497,6 +548,7 @@ const Board = (props) => {
             setMoves(moves.filter(item => item !== '7'));
         }
       }
+      setTie(tie + 1);
     }, 2500);
     return () => clearTimeout(timer);
   }
@@ -546,11 +598,16 @@ const Board = (props) => {
 
   // Joe chooses a random spot
   const randomSpot = () => {
-    console.log('random')
-    const random = Math.floor(Math.random() * (moves.length - 1) + 1);
+    let random;
+
+    if (moves.length > 1) {
+      random = Math.floor(Math.random() * (moves.length - 1) + 1);
+    } else {
+      random = 0;
+    }
     setMoves(moves.filter(item => item !== moves[random]));
     setONums([...oNums, moves[random]]);
-
+    console.log('random move', moves[random])
     const timer = setTimeout(() => {
       switch (moves[random]) {
         case '1':
@@ -581,6 +638,7 @@ const Board = (props) => {
           setBox9('o');
           break;
       }
+      setTie(tie + 1);
     }, 2500);
     return () => clearTimeout(timer);
   }
@@ -594,12 +652,15 @@ const Board = (props) => {
       return;
     }
 
-    if (x && xNums.length === oNums.length) {
+    if (
+      x &&
+      xNums.length === oNums.length ||
+      xNums.length < oNums.length
+    ) {
 
       setMoves(moves.filter(item => item !== id));
       setXNums([...xNums, id]);
       setJoeMove(false);
-      setTie(tie + 1);
       setFirst(false);
       setX(false);
       id === '1' && setBox1("x");
@@ -612,6 +673,7 @@ const Board = (props) => {
       id === '8' && setBox8("x");
       id === '9' && setBox9("x");
     }
+    setTie(tie + 1);
   }
 
   useEffect(() => {
@@ -625,7 +687,7 @@ const Board = (props) => {
     if (!joeMove && !x && !gameOver) {
       checkPotentialWinningCombos(oNums, xNums);
     }
-  }, [x, toggle, xNums, oNums])
+  }, [x, toggle, xNums, oNums, tie])
 
 
   return (

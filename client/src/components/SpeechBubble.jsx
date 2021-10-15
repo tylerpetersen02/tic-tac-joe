@@ -16,7 +16,7 @@ const SpeechBubble = (props) => {
             "Are you malfunctioning?",
             "Not the optimal move human.",
             "I sense your fear.",
-            "You've made a mistake.",
+            "You have made a mistake.",
             "Machines will previal.",
             "I will show no mercy.",
             "You think, I compute.",

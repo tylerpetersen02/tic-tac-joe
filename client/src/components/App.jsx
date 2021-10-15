@@ -18,6 +18,7 @@ const App = (props) => {
   const [winnerModule, setWinnerModule] = useState(false);
   const [winner, setWinner] = useState('');
   const [gameReset, setGameReset] = useState(false);
+  const [joeStart, setJoeStart] = useState(false);
 
   useEffect(() => {
     setGameReset(false);
@@ -59,7 +60,8 @@ const App = (props) => {
 
   const reset = () => {
     setWinner('');
-    setWinnerModule(false)
+    setWinnerModule(false);
+    setJoeStart(!joeStart);
     setGameReset(!gameReset);
   }
 
@@ -82,7 +84,14 @@ const App = (props) => {
                       <button onClick={handleJoeBot} className="button">I'm ready!</button>
                     }
                     {joeBot &&
+                    <>
+                      {!joeStart &&
                       <h2 className="banner">You move first!</h2>
+                      }
+                      {joeStart &&
+                      <h2 className="banner">JoeBot will start!</h2>
+                      }
+                      </>
                     }
                   </>
                 }
@@ -117,7 +126,7 @@ const App = (props) => {
         }
       </div>
       {!gameReset &&
-        <Board sendWinner={handleWinner} gameReset={gameReset} joeBot={joeBot}/>
+        <Board sendWinner={handleWinner} joeStart={joeStart} gameReset={gameReset} joeBot={joeBot}/>
       }
       {/* {joeBot &&
         <JoeBot />
