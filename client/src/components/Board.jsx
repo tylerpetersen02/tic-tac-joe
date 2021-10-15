@@ -30,11 +30,11 @@ const Board = (props) => {
   const [joeLine, setJoeLine] = useState('');
   const reset = props.gameReset;
   let gameOver = false;
-  console.log(tie)
+
 
   useEffect(() => {
     if (props.joeStart) {
-      console.log('joe first')
+
       setX(!x);
       setJoeMove(!joeMove);
     }
@@ -63,7 +63,7 @@ const Board = (props) => {
   }
 
   const checkAllWinningCombos = currPlayer => {
-    console.log('checking tie', tie)
+
     if (
       (
         currPlayer.includes('1') &&
@@ -150,7 +150,7 @@ const Board = (props) => {
           for (var j = i + 1; j < bothMoves.length; j++) {
 
             let curr = bothMoves[i].concat(bothMoves[j]);
-            console.log(curr)
+
             if (
               potentialWinningCombos.includes(curr)
             ) {
@@ -158,7 +158,7 @@ const Board = (props) => {
               setPreviousCombos([...previousCombos, combo]);
 
               if (moves.includes(findThirdSpot(combo))) {
-                console.log('combo', combo)
+
                 const timer = setTimeout(() => {
 
                   switch (combo) {
@@ -435,7 +435,7 @@ const Board = (props) => {
 
   // Plays corner to block a trap
   const playBlockingCorner = () => {
-    console.log('blocking')
+
     let combo = xNums.join('');
 
     const timer = setTimeout(() => {
@@ -469,7 +469,7 @@ const Board = (props) => {
 
   // Chooses a corner first move if middle taken
   const chooseCorner = () => {
-    console.log('corner')
+
     const corners = ['1', '3', '7', '9']
     const random = Math.floor(Math.random() * (corners.length - 1) + 1);
     setMoves(moves.filter(item => item !== corners[random]));
@@ -499,7 +499,7 @@ const Board = (props) => {
 
   // Play a tile in an adjacent corner to move on second turn
   const playAdjacentCorner = () => {
-    console.log('adjacent')
+
     const random = Math.floor(Math.random() * 2);
 
     const timer = setTimeout(() => {
@@ -556,7 +556,7 @@ const Board = (props) => {
 
   // Finds the blocking/winning move if there is one
   const findThirdSpot = (str) => {
-    console.log(str);
+
     let final;
     let split = str.split('').sort();
     let first = Number(split[0]);
@@ -591,7 +591,7 @@ const Board = (props) => {
     }
 
     final = final.toString();
-    console.log(final);
+
     return final;
   }
 
@@ -607,7 +607,7 @@ const Board = (props) => {
     }
     setMoves(moves.filter(item => item !== moves[random]));
     setONums([...oNums, moves[random]]);
-    console.log('random move', moves[random])
+
     const timer = setTimeout(() => {
       switch (moves[random]) {
         case '1':
@@ -683,7 +683,7 @@ const Board = (props) => {
   useEffect(() => {
     checkAllWinningCombos(oNums);
     checkAllWinningCombos(xNums);
-    console.log(joeMove, x, gameOver)
+
     if (!joeMove && !x && !gameOver) {
       checkPotentialWinningCombos(oNums, xNums);
     }
