@@ -647,6 +647,10 @@ const Board = (props) => {
   // Player places their tile
   const placeTile = (e) => {
     let id = e.currentTarget.id;
+    console.log('hello')
+    if (props.joeStart && oNums.length === 0) {
+      return;
+    }
 
     if (!moves.includes(id)) {
       return;
@@ -654,8 +658,9 @@ const Board = (props) => {
 
     if (
       x &&
-      xNums.length === oNums.length ||
-      xNums.length < oNums.length
+      joeMove &&
+      (xNums.length === oNums.length ||
+      xNums.length < oNums.length)
     ) {
 
       setMoves(moves.filter(item => item !== id));
