@@ -9,6 +9,8 @@
 
 It may seem like a simple game of Tic-Tac-Toe, but the current champion JoeBot has never lost to a human! If you are feeling bold, go ahead and challenge him for the title. Play on desktop, tablet, or mobile!
 
+Play JoeBot here: https://tic-tac-joe.vercel.app/
+
 ## Content
 
 <img src="/lib/img/CPT2110141833-1904x910.gif">
